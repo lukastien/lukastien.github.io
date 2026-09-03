@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lukas Tien — UC Berkeley student exploring data science, analytics, and creative projects." />
+  <title>Lukas Tien</title>
+
+  <!-- Typography: Syne for display, Instrument Serif for accent, Outfit for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="site-header">
+    <a href="#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#projects">PROJECTS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="#projects">PROJECTS</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero" aria-label="Introduction">
+      <p class="hero-eyebrow">UC BERKELEY · STATISTICS · DATA SCIENCE · ECONOMICS</p>
+      <h1 class="hero-headline">
+        Building things with<br />
+        <em>data, code, and curiosity.</em>
+      </h1>
+      <p class="hero-desc">
+        I'm Lukas Tien, a student at UC Berkeley interested in data science,
+        analytics, sports, technology, and building interesting projects.
+      </p>
+      <a href="#projects" class="cta">VIEW PROJECTS <span class="cta-arrow">↓</span></a>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-label">SELECTED WORK</h2>
+
+      <div class="project-list">
+        <!-- Swap the <div class="project-link"> for an <a href="..."> when you have a project URL -->
+        <article class="project">
+          <div class="project-link">
+            <span class="project-number">01</span>
+            <div class="project-body">
+              <h3 class="project-title">NBA PLAYER-TEAM FIT ANALYSIS</h3>
+              <p class="project-desc">
+                A data-driven model that evaluates how well an NBA player fits a team's
+                style of play using statistics related to pace, shooting, transition
+                offense, defense, and play style.
+              </p>
+              <p class="project-tech">PYTHON · SQL · DATA ANALYSIS · SPORTS ANALYTICS</p>
+            </div>
+            <span class="project-indicator" aria-hidden="true">→</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-link">
+            <span class="project-number">02</span>
+            <div class="project-body">
+              <h3 class="project-title">MARKOV CHAIN MARKET MODELING</h3>
+              <p class="project-desc">
+                Exploring financial market states and transition probabilities using
+                Markov chains and Monte Carlo simulation.
+              </p>
+              <p class="project-tech">PYTHON · STATISTICS · PROBABILITY · MCMC</p>
+            </div>
+            <span class="project-indicator" aria-hidden="true">→</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-link">
+            <span class="project-number">03</span>
+            <div class="project-body">
+              <h3 class="project-title">MOBILITY LOAN CLOSET</h3>
+              <p class="project-desc">
+                An inventory and equipment loan management system built using AppSheet,
+                Google Sheets, Google Apps Script, and API integrations.
+              </p>
+              <p class="project-tech">APPSHEET · GOOGLE APPS SCRIPT · AUTOMATION</p>
+            </div>
+            <span class="project-indicator" aria-hidden="true">→</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-link">
+            <span class="project-number">04</span>
+            <div class="project-body">
+              <h3 class="project-title">ARBFINDER</h3>
+              <p class="project-desc">
+                A sports analytics project exploring betting markets, data APIs,
+                and arbitrage opportunities.
+              </p>
+              <p class="project-tech">PYTHON · APIS · DATA ANALYSIS</p>
+            </div>
+            <span class="project-indicator" aria-hidden="true">→</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-label">ABOUT</h2>
+      <p class="about-lead">
+        I like working at the intersection of analytics, technology, and creativity.
+      </p>
+      <div class="about-content">
+        <p>
+          I'm drawn to using data and technology to understand interesting problems
+          and build useful projects — whether that's modeling how athletes fit a
+          team's system, simulating market dynamics, or designing tools that make
+          everyday workflows smoother.
+        </p>
+        <p>
+          Outside of data and technology, I care about basketball, ultimate frisbee,
+          music, creative projects, and building things that feel intentional.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="contact-headline">
+        LET'S BUILD SOMETHING INTERESTING.
+      </h2>
+      <ul class="contact-links">
+        <!-- Replace these URLs with your own -->
+        <li>
+          <a href="https://github.com/lukastien" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </li>
+        <li>
+          <!-- TODO: Replace with your LinkedIn URL -->
+          <a href="https://linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <!-- TODO: Replace with your email -->
+          <a href="mailto:YOUR_EMAIL@example.com">
+            Email
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 LUKAS TIEN</p>
+    <p class="footer-note">Built with curiosity.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
