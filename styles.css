@@ -26,6 +26,7 @@
 
   --header-h: 4rem;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --timeline-rail: 1.25rem;
 }
 
 /* Reset */
@@ -68,7 +69,11 @@ ul {
   list-style: none;
 }
 
-/* Subtle grain texture for atmosphere (not a flat single color) */
+.hidden {
+  display: none !important;
+}
+
+/* Subtle grain texture */
 body::before {
   content: "";
   position: fixed;
@@ -119,7 +124,9 @@ body::before {
 
 .nav {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.5rem;
 }
 
 .nav a {
@@ -172,7 +179,6 @@ body::before {
   z-index: 99;
   display: flex;
   flex-direction: column;
-  gap: 0;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   padding: 0.5rem 0;
@@ -185,7 +191,7 @@ body::before {
 .mobile-nav a {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.12em;
   padding: 1.1rem clamp(1.25rem, 4vw, 3.5rem);
   color: var(--text-muted);
@@ -206,17 +212,22 @@ body::before {
    Shared
    ======================================== */
 
-.section-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.6875rem;
-  letter-spacing: 0.18em;
-  color: var(--text-faint);
-  margin-bottom: var(--space-lg);
-}
-
 main {
   padding: 0 clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.section {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+  border-top: 1px solid var(--border);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-lg);
 }
 
 /* ========================================
@@ -228,187 +239,245 @@ main {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-top: calc(var(--header-h) + var(--space-xl));
-  padding-bottom: clamp(3rem, 8vh, 5.5rem);
-  /* Soft radial wash — atmosphere without gradients as the main idea */
+  justify-content: center;
+  padding-top: calc(var(--header-h) + var(--space-lg));
+  padding-bottom: var(--space-xl);
   background:
     radial-gradient(ellipse 80% 50% at 10% 0%, rgba(242, 240, 235, 0.03) 0%, transparent 55%),
     radial-gradient(ellipse 60% 40% at 90% 80%, rgba(200, 194, 180, 0.025) 0%, transparent 50%);
 }
 
-.hero-eyebrow {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(0.625rem, 1.2vw, 0.75rem);
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
-  max-width: 42rem;
-}
-
-.hero-headline {
+.hero-name {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.4rem, 7.2vw, 5.75rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  max-width: 14ch;
-  margin-bottom: clamp(1.5rem, 3.5vh, 2.25rem);
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
 }
 
-.hero-headline em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--accent-serif);
-  letter-spacing: -0.01em;
-}
-
-.hero-desc {
-  max-width: 34rem;
-  color: var(--text-muted);
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  margin-bottom: clamp(2rem, 4vh, 3rem);
-  font-weight: 300;
-}
-
-.cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
+.hero-role {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  padding: 0.95rem 0;
-  border-bottom: 1px solid var(--border-strong);
-  transition: border-color 0.3s var(--ease), opacity 0.3s var(--ease);
-  width: fit-content;
+  font-size: clamp(0.8125rem, 1.6vw, 1rem);
+  letter-spacing: 0.18em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
 }
 
-.cta:hover {
-  border-bottom-color: var(--text);
-}
-
-.cta-arrow {
-  display: inline-block;
-  transition: transform 0.3s var(--ease);
-}
-
-.cta:hover .cta-arrow {
-  transform: translateY(3px);
+.hero-fields {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(0.6875rem, 1.3vw, 0.8125rem);
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
 }
 
 /* ========================================
-   Projects
+   Timeline (Projects + Experience)
    ======================================== */
 
-.projects {
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-xl);
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 0;
 }
 
-.project-list {
-  border-top: 1px solid var(--border);
+/* Vertical rail */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  bottom: 0.55rem;
+  left: calc(var(--timeline-rail) / 2);
+  width: 1px;
+  background: var(--border);
+  transform: translateX(-50%);
 }
 
-.project {
-  border-bottom: 1px solid var(--border);
-}
-
-.project-link {
+.timeline-item {
   display: grid;
-  grid-template-columns: 3.5rem 1fr auto;
-  gap: clamp(1rem, 3vw, 2.5rem);
-  align-items: start;
-  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0;
-  transition: background-color 0.35s var(--ease), padding-left 0.35s var(--ease);
+  grid-template-columns: var(--timeline-rail) 1fr;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem) 0;
+  position: relative;
 }
 
-.project-link:hover {
-  padding-left: 0.5rem;
+.timeline-item:first-child {
+  padding-top: 0.25rem;
 }
 
-.project-number {
+.timeline-item:last-child {
+  padding-bottom: 0.25rem;
+}
+
+.timeline-marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.55rem;
+}
+
+.timeline-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  z-index: 1;
+}
+
+.timeline-content {
+  min-width: 0;
+  transition: transform 0.35s var(--ease);
+}
+
+.timeline-item:hover .timeline-content {
+  transform: translateX(4px);
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--text);
+  border-color: var(--text);
+  transform: scale(1.15);
+}
+
+.timeline-meta {
+  display: block;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
   color: var(--text-faint);
-  padding-top: 0.35rem;
-  transition: color 0.3s var(--ease);
+  margin-bottom: 0.65rem;
 }
 
-.project-title {
+.timeline-heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.25rem, 3.2vw, 2rem);
+  font-size: clamp(1.15rem, 2.8vw, 1.75rem);
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.2;
   margin-bottom: 0.75rem;
-  transition: transform 0.35s var(--ease), letter-spacing 0.35s var(--ease);
+  transition: letter-spacing 0.35s var(--ease);
 }
 
-.project-link:hover .project-title {
-  transform: translateX(4px);
+.timeline-item:hover .timeline-heading {
   letter-spacing: -0.01em;
 }
 
-.project-link:hover .project-number {
-  color: var(--text-muted);
-}
-
-.project-desc {
+.timeline-desc {
   color: var(--text-muted);
   font-size: clamp(0.9375rem, 1.4vw, 1.0625rem);
   max-width: 40rem;
   margin-bottom: 1rem;
-  transition: opacity 0.3s var(--ease);
 }
 
-.project-link:hover .project-desc {
-  opacity: 0.85;
-}
-
-.project-tech {
+.timeline-tech {
   font-family: var(--font-display);
   font-weight: 500;
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   color: var(--text-faint);
+  margin-bottom: 0.85rem;
 }
 
-.project-indicator {
-  font-size: 1.25rem;
+.timeline-repo {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.15rem;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.timeline-repo:hover {
   color: var(--text);
-  opacity: 0;
-  transform: translateX(-8px);
-  transition: opacity 0.3s var(--ease), transform 0.35s var(--ease);
-  padding-top: 0.25rem;
-  align-self: center;
+  border-bottom-color: var(--text);
 }
 
-.project-link:hover .project-indicator {
-  opacity: 1;
-  transform: translateX(0);
+/* ========================================
+   Work Experience
+   ======================================== */
+
+.experience-note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9375rem;
+  color: var(--text-faint);
+  margin-bottom: var(--space-md);
+  padding-left: calc(var(--timeline-rail) + clamp(1.25rem, 3vw, 2.5rem));
+}
+
+.experience-org {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.experience-details {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-bottom: 0.9rem;
+}
+
+.experience-sep {
+  margin: 0 0.35rem;
+}
+
+.experience-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.experience-bullets li {
+  position: relative;
+  padding-left: 1rem;
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  line-height: 1.55;
+}
+
+.experience-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 0.3rem;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.experience-placeholder .timeline-heading,
+.experience-placeholder .experience-org,
+.experience-placeholder .experience-details,
+.experience-placeholder .timeline-desc,
+.experience-placeholder .experience-bullets li {
+  opacity: 0.45;
 }
 
 /* ========================================
    About
    ======================================== */
 
-.about {
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
-  border-top: 1px solid var(--border);
-  margin-top: var(--space-lg);
-}
-
 .about-lead {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
   line-height: 1.15;
   letter-spacing: -0.025em;
   max-width: 18ch;
@@ -431,36 +500,29 @@ main {
    Contact
    ======================================== */
 
-.contact {
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
-  border-top: 1px solid var(--border);
-}
-
-.contact-headline {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 5.5vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  max-width: 12ch;
+.contact-invite {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  color: var(--accent-serif);
   margin-bottom: var(--space-lg);
+  letter-spacing: -0.01em;
 }
 
 .contact-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 2.5rem;
+  gap: 0.75rem 2.5rem;
 }
 
 .contact-links a {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   letter-spacing: 0.12em;
   color: var(--text-muted);
-  border-bottom: 1px solid transparent;
-  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--border-strong);
+  padding: 0.35rem 0;
   transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
 
@@ -494,20 +556,17 @@ main {
 }
 
 /* ========================================
-   Responsive — Tablet
+   Responsive — Mid
    ======================================== */
 
-@media (max-width: 900px) {
-  .project-link {
-    grid-template-columns: 2.5rem 1fr;
+@media (max-width: 960px) {
+  .nav {
+    gap: 1.15rem;
   }
 
-  .project-indicator {
-    display: none;
-  }
-
-  .hero-headline {
-    max-width: 100%;
+  .nav a {
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -515,7 +574,7 @@ main {
    Responsive — Mobile
    ======================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 780px) {
   .nav {
     display: none;
   }
@@ -525,55 +584,60 @@ main {
   }
 
   .hero {
-    justify-content: center;
     padding-top: calc(var(--header-h) + 2rem);
     padding-bottom: 3rem;
   }
 
-  .hero-eyebrow {
+  .hero-name {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  }
+
+  .hero-fields {
     letter-spacing: 0.1em;
     line-height: 1.6;
   }
 
-  .project-link {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-    padding: 1.5rem 0;
+  .section {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
   }
 
-  .project-link:hover {
-    padding-left: 0;
+  .timeline::before {
+    left: 0.35rem;
   }
 
-  .project-number {
-    padding-top: 0;
+  .timeline-item {
+    grid-template-columns: 0.7rem 1fr;
+    gap: 1rem;
+    padding: 1.35rem 0;
   }
 
-  .project-link:hover .project-title {
+  .timeline-item:hover .timeline-content {
     transform: none;
   }
 
-  .project-title {
-    font-size: 1.2rem;
+  .timeline-marker {
+    padding-top: 0.5rem;
+  }
+
+  .experience-note {
+    padding-left: 0;
+    margin-bottom: var(--space-sm);
   }
 
   .about-lead {
     max-width: 100%;
   }
 
-  .contact-headline {
-    max-width: 100%;
-  }
-
   .contact-links {
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.1rem;
   }
 
   .contact-links a {
-    font-size: 0.9375rem;
-    /* Larger tap targets on mobile */
-    padding: 0.35rem 0;
+    font-size: 1rem;
+    padding: 0.45rem 0;
+    width: fit-content;
   }
 
   .site-footer {

@@ -4,36 +4,30 @@ Personal portfolio for **Lukas Tien** — UC Berkeley student studying Statistic
 
 ## Run locally
 
-Open `index.html` in a browser, or serve the folder:
-
 ```bash
-# Python
 python3 -m http.server 8000
-
-# Node (if you have npx)
-npx serve .
 ```
 
 Then visit [http://localhost:8000](http://localhost:8000).
 
+Or open `index.html` directly in a browser.
+
 ## Deploy to GitHub Pages
 
-This repo is named `lukastien.github.io`, so pushing to `main` publishes the site automatically:
+Push to `main`. Site: [https://lukastien.github.io](https://lukastien.github.io)
 
-1. Commit your changes
-2. Push to `origin/main`
-3. Site live at [https://lukastien.github.io](https://lukastien.github.io)
-
-If Pages is not enabled yet: **Settings → Pages → Source → Deploy from branch → `main` / root**.
+If needed: **Settings → Pages → Source → Deploy from branch → `main` / root**.
 
 ## Customize
 
-| What | Where |
-|------|--------|
-| LinkedIn & email | `index.html` — contact links (search for `TODO`) |
-| Projects | `index.html` — `#projects` section |
-| Copy / bio | `index.html` — hero & about sections |
-| Colors & type | `styles.css` — `:root` variables |
+| What | Where in `index.html` |
+|------|------------------------|
+| Projects | `#projects` — copy a `article.timeline-item` |
+| Project GitHub links | `.timeline-repo` — set `href`, remove `hidden` |
+| Work experience | `#experience` — edit or duplicate the placeholder entry |
+| About Me | `#about` |
+| LinkedIn & email | `#contact` — search for `TODO` |
+| Colors / type | `styles.css` — `:root` |
 
 ## Files
 

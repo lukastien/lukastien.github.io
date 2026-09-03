@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Lukas Tien — UC Berkeley student exploring data science, analytics, and creative projects." />
+  <meta name="description" content="Lukas Tien — UC Berkeley student studying Statistics, Data Science, and Economics." />
   <title>Lukas Tien</title>
 
   <!-- Typography: Syne for display, Instrument Serif for accent, Outfit for body -->
@@ -19,7 +19,8 @@
     <a href="#top" class="logo">LUKAS TIEN</a>
     <nav class="nav" aria-label="Primary">
       <a href="#projects">PROJECTS</a>
-      <a href="#about">ABOUT</a>
+      <a href="#experience">WORK EXPERIENCE</a>
+      <a href="#about">ABOUT ME</a>
       <a href="#contact">CONTACT</a>
     </nav>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -30,121 +31,188 @@
 
   <nav class="mobile-nav" aria-label="Mobile" hidden>
     <a href="#projects">PROJECTS</a>
-    <a href="#about">ABOUT</a>
+    <a href="#experience">WORK EXPERIENCE</a>
+    <a href="#about">ABOUT ME</a>
     <a href="#contact">CONTACT</a>
   </nav>
 
   <main id="top">
     <!-- Hero -->
     <section class="hero" aria-label="Introduction">
-      <p class="hero-eyebrow">UC BERKELEY · STATISTICS · DATA SCIENCE · ECONOMICS</p>
-      <h1 class="hero-headline">
-        Building things with<br />
-        <em>data, code, and curiosity.</em>
-      </h1>
-      <p class="hero-desc">
-        I'm Lukas Tien, a student at UC Berkeley interested in data science,
-        analytics, sports, technology, and building interesting projects.
-      </p>
-      <a href="#projects" class="cta">VIEW PROJECTS <span class="cta-arrow">↓</span></a>
+      <h1 class="hero-name">LUKAS TIEN</h1>
+      <p class="hero-role">UC BERKELEY STUDENT</p>
+      <p class="hero-fields">STATISTICS · DATA SCIENCE · ECONOMICS</p>
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="section-label">SELECTED WORK</h2>
+    <section id="projects" class="section projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" class="section-title">PROJECTS</h2>
 
-      <div class="project-list">
-        <!-- Swap the <div class="project-link"> for an <a href="..."> when you have a project URL -->
-        <article class="project">
-          <div class="project-link">
-            <span class="project-number">01</span>
-            <div class="project-body">
-              <h3 class="project-title">NBA PLAYER-TEAM FIT ANALYSIS</h3>
-              <p class="project-desc">
-                A data-driven model that evaluates how well an NBA player fits a team's
-                style of play using statistics related to pace, shooting, transition
-                offense, defense, and play style.
-              </p>
-              <p class="project-tech">PYTHON · SQL · DATA ANALYSIS · SPORTS ANALYTICS</p>
-            </div>
-            <span class="project-indicator" aria-hidden="true">→</span>
+      <div class="timeline">
+        <!--
+          To add a project: copy an article.timeline-item below.
+          To link a GitHub repo: set the href on .timeline-repo (remove "hidden" class).
+        -->
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-meta">01</span>
+            <h3 class="timeline-heading">NBA PLAYER-TEAM FIT ANALYSIS</h3>
+            <p class="timeline-desc">
+              A data-driven project exploring how well an NBA player fits a team's
+              style of play — looking at pace, transition offense, shooting,
+              play style, defense, and team needs.
+            </p>
+            <p class="timeline-tech">PYTHON · SQL · DATA ANALYSIS · SPORTS ANALYTICS</p>
+            <!-- TODO: Replace # with your project GitHub URL, then remove class="hidden" -->
+            <a class="timeline-repo hidden" href="#" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </div>
         </article>
 
-        <article class="project">
-          <div class="project-link">
-            <span class="project-number">02</span>
-            <div class="project-body">
-              <h3 class="project-title">MARKOV CHAIN MARKET MODELING</h3>
-              <p class="project-desc">
-                Exploring financial market states and transition probabilities using
-                Markov chains and Monte Carlo simulation.
-              </p>
-              <p class="project-tech">PYTHON · STATISTICS · PROBABILITY · MCMC</p>
-            </div>
-            <span class="project-indicator" aria-hidden="true">→</span>
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-meta">02</span>
+            <h3 class="timeline-heading">MARKOV CHAIN MARKET MODELING</h3>
+            <p class="timeline-desc">
+              A project exploring financial market states and transition
+              probabilities using Markov chains and probability concepts.
+            </p>
+            <p class="timeline-tech">PYTHON · STATISTICS · PROBABILITY · MARKOV CHAINS</p>
+            <!-- TODO: Replace # with your project GitHub URL, then remove class="hidden" -->
+            <a class="timeline-repo hidden" href="#" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </div>
         </article>
 
-        <article class="project">
-          <div class="project-link">
-            <span class="project-number">03</span>
-            <div class="project-body">
-              <h3 class="project-title">MOBILITY LOAN CLOSET</h3>
-              <p class="project-desc">
-                An inventory and equipment loan management system built using AppSheet,
-                Google Sheets, Google Apps Script, and API integrations.
-              </p>
-              <p class="project-tech">APPSHEET · GOOGLE APPS SCRIPT · AUTOMATION</p>
-            </div>
-            <span class="project-indicator" aria-hidden="true">→</span>
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-meta">03</span>
+            <h3 class="timeline-heading">MOBILITY LOAN CLOSET</h3>
+            <p class="timeline-desc">
+              An inventory and equipment loan management application designed
+              to manage equipment, borrowers, and loans.
+            </p>
+            <p class="timeline-tech">APPSHEET · GOOGLE SHEETS · GOOGLE APPS SCRIPT · AUTOMATION · API INTEGRATION</p>
+            <!-- TODO: Replace # with your project GitHub URL, then remove class="hidden" -->
+            <a class="timeline-repo hidden" href="#" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </div>
         </article>
 
-        <article class="project">
-          <div class="project-link">
-            <span class="project-number">04</span>
-            <div class="project-body">
-              <h3 class="project-title">ARBFINDER</h3>
-              <p class="project-desc">
-                A sports analytics project exploring betting markets, data APIs,
-                and arbitrage opportunities.
-              </p>
-              <p class="project-tech">PYTHON · APIS · DATA ANALYSIS</p>
-            </div>
-            <span class="project-indicator" aria-hidden="true">→</span>
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-meta">04</span>
+            <h3 class="timeline-heading">ARBFINDER</h3>
+            <p class="timeline-desc">
+              A sports analytics project exploring betting markets, APIs,
+              and arbitrage opportunities.
+            </p>
+            <p class="timeline-tech">PYTHON · APIS · DATA ANALYSIS</p>
+            <!-- TODO: Replace # with your project GitHub URL, then remove class="hidden" -->
+            <a class="timeline-repo hidden" href="#" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="about" aria-labelledby="about-title">
-      <h2 id="about-title" class="section-label">ABOUT</h2>
+    <!-- Work Experience -->
+    <section id="experience" class="section experience" aria-labelledby="experience-title">
+      <h2 id="experience-title" class="section-title">WORK EXPERIENCE</h2>
+
+      <div class="timeline timeline--experience">
+        <!--
+          To add experience: copy an article.timeline-item below and fill in the fields.
+          Delete the empty-state note once you add your first role.
+        -->
+        <p class="experience-note">
+          Add your roles below — each entry is ready to edit.
+        </p>
+
+        <!-- EXAMPLE ENTRY (edit or duplicate this block)
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-heading">Job Title</h3>
+            <p class="experience-org">Company / Organization</p>
+            <p class="experience-details">
+              <span>Month Year – Month Year</span>
+              <span class="experience-sep">·</span>
+              <span>City, State</span>
+            </p>
+            <p class="timeline-desc">
+              Short description of what you did and what you accomplished.
+            </p>
+            <ul class="experience-bullets">
+              <li>Key responsibility or accomplishment</li>
+              <li>Key responsibility or accomplishment</li>
+            </ul>
+          </div>
+        </article>
+        -->
+
+        <article class="timeline-item experience-placeholder">
+          <div class="timeline-marker" aria-hidden="true">
+            <span class="timeline-dot"></span>
+          </div>
+          <div class="timeline-content">
+            <h3 class="timeline-heading">Job Title</h3>
+            <p class="experience-org">Company / Organization</p>
+            <p class="experience-details">
+              <span>Month Year – Month Year</span>
+              <span class="experience-sep">·</span>
+              <span>Location</span>
+            </p>
+            <p class="timeline-desc">
+              Replace this with a short description of your role. Keep it concise —
+              one or two sentences about what you worked on.
+            </p>
+            <ul class="experience-bullets">
+              <li>Key responsibility or accomplishment</li>
+              <li>Key responsibility or accomplishment</li>
+              <li>Key responsibility or accomplishment</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">ABOUT ME</h2>
       <p class="about-lead">
-        I like working at the intersection of analytics, technology, and creativity.
+        I like working where data, technology, and creativity meet.
       </p>
       <div class="about-content">
         <p>
-          I'm drawn to using data and technology to understand interesting problems
-          and build useful projects — whether that's modeling how athletes fit a
-          team's system, simulating market dynamics, or designing tools that make
-          everyday workflows smoother.
+          I'm a UC Berkeley student studying Statistics, Data Science, and Economics.
+          A lot of what I enjoy sits at the intersection of analytics, sports,
+          and building things — using data to understand problems, then turning
+          that into something useful or interesting.
         </p>
         <p>
-          Outside of data and technology, I care about basketball, ultimate frisbee,
-          music, creative projects, and building things that feel intentional.
+          Outside of class and projects, I spend time on basketball, ultimate
+          frisbee, music, and creative work. I like making things that feel
+          intentional, whether that's a model, a tool, or something more open-ended.
         </p>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="contact-headline">
-        LET'S BUILD SOMETHING INTERESTING.
-      </h2>
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">CONTACT</h2>
+      <p class="contact-invite">Let's build something interesting.</p>
       <ul class="contact-links">
-        <!-- Replace these URLs with your own -->
         <li>
           <a href="https://github.com/lukastien" target="_blank" rel="noopener noreferrer">
             GitHub
