@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nintendo Intelligence Hub — an end-to-end business intelligence platform by Lukas Tien: Python ETL, PostgreSQL, dbt marts, a six-page Streamlit dashboard, monitoring, and backtested forecasting over 2,323 official Nintendo records." />
+  <title>Nintendo Intelligence Hub — Case Study | Lukas Tien</title>
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Nintendo Intelligence Hub — End-to-End Business Intelligence &amp; Predictive Analytics" />
+  <meta property="og:description" content="2,323 official Nintendo records · 5 dbt marts · 6 dashboard pages · 9 forecasting models · 980 leakage-free backtesting folds." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/nintendo-intelligence-hub/" />
+  <meta property="og:image" content="https://lukastien.github.io/assets/nintendo/executive-overview.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="project.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+
+  <main class="case-main">
+    <!-- A: Hero -->
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">FEATURED PROJECT · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">NINTENDO<br />INTELLIGENCE HUB</h1>
+      <p class="case-subtitle">End-to-End Business Intelligence &amp; Predictive Analytics</p>
+      <div class="case-meta"><span>OCTOBER 2026</span><span>INDEPENDENT PORTFOLIO PROJECT</span><span>RUNS LOCALLY · NOT YET DEPLOYED</span></div>
+      <div class="case-copy">
+        <p>Nintendo publishes decades of hardware, software, regional, and financial results in investor-relations pages and workbooks — authoritative data that is remarkably easy to analyse <strong>wrong</strong>. Cumulative columns masquerade as quarters, platform families already contain their component models, and regional definitions change over time. Sum the wrong rows and a dashboard reports confident, incorrect numbers.</p>
+        <p>Nintendo Intelligence Hub is the pipeline, warehouse, and analytics layer that makes those figures safe to use: automated ingestion with provenance, a PostgreSQL warehouse, tested dbt marts, a live dashboard, monitoring, and honestly backtested forecasts.</p>
+      </div>
+      <div class="case-actions">
+        <a class="btn-primary" href="https://github.com/lukastien/nintendo-intelligence-hub" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+        <a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a>
+      </div>
+      <p class="timeline-tech">PYTHON · SQL · POSTGRESQL · DBT · STREAMLIT · PLOTLY · SCIKIT-LEARN · STATSMODELS · DOCKER</p>
+      <figure class="figure" style="margin-top:2rem;">
+        <img class="hero-img" src="../../assets/nintendo/executive-overview.jpg" alt="Executive Overview dashboard showing worldwide hardware and software KPI cards for FY3/2026, consolidated net sales, and operating profit with margin" width="1024" height="647" fetchpriority="high" />
+        <figcaption><strong>EXECUTIVE OVERVIEW</strong>The live Streamlit dashboard querying the local PostgreSQL warehouse. Every figure is read at runtime from official Nintendo IR disclosures — nothing is hardcoded.</figcaption>
+      </figure>
+      <p class="disclaimer">Independent portfolio project built from publicly available Nintendo investor-relations data. Not affiliated with, sponsored, or endorsed by Nintendo. Forecasts are independent statistical estimates, never Nintendo guidance.</p>
+    </section>
+
+    <!-- B: Overview -->
+    <section class="case-section" aria-labelledby="overview-title">
+      <p class="case-kicker">01 — PROJECT OVERVIEW</p>
+      <h2 id="overview-title" class="case-h2">The business problem</h2>
+      <div class="two-col">
+        <div class="case-copy">
+          <p>A BI analyst covering a platform business needs trustworthy answers: How did hardware and software sell-in move by platform and region? How do unit trends relate to consolidated revenue and margin? Which platforms are growing, maturing, or in tail decline?</p>
+          <p>Nintendo's disclosures answer all of this — spanning consoles from historical systems to the Switch family, with consolidated financials back to <strong>FY3/1991</strong>. But the source material mixes web pages and historical workbooks, cumulative year-to-date spans, life-to-date snapshots beside annual flows, and regional layouts whose definitions shift across decades.</p>
+        </div>
+        <div class="case-copy">
+          <p>The platform treats <strong>correctness of grain and provenance as the product</strong>: every mart row traces to a source document, every total states what it includes, and every derived number carries the rule that produced it.</p>
+          <p>That is the same discipline a BI, analytics-engineering, or data-engineering team needs in production — connecting data engineering directly to decisions about platform strategy, regional performance, and financial planning. The intended users are analysts and decision-makers who need reported figures they can defend, not just chart.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- C: Metrics -->
+    <section class="case-section" aria-labelledby="metrics-title">
+      <p class="case-kicker">02 — AT A GLANCE</p>
+      <h2 id="metrics-title" class="case-h2">Key metrics</h2>
+      <div class="metrics-grid" role="list">
+        <div class="metric" role="listitem"><span class="metric-value">2,323</span><span class="metric-label">OFFICIAL RECORDS<br />2,179 UNIT-SALES + 144 FINANCIAL</span></div>
+        <div class="metric" role="listitem"><span class="metric-value">5</span><span class="metric-label">ANALYTICAL<br />DATA MARTS (DBT)</span></div>
+        <div class="metric" role="listitem"><span class="metric-value">6</span><span class="metric-label">INTERACTIVE<br />DASHBOARD PAGES</span></div>
+        <div class="metric" role="listitem"><span class="metric-value">9</span><span class="metric-label">FORECASTING<br />MODELS EVALUATED</span></div>
+        <div class="metric" role="listitem"><span class="metric-value">980</span><span class="metric-label">LEAKAGE-FREE BACKTESTING<br />FOLDS</span></div>
+      </div>
+      <p class="callout">Verified against the live local warehouse and repository: <strong>100+ Python tests passing</strong> and <strong>72 dbt results with 0 failures</strong>. A pipeline rerun inserts and updates <strong>0 records</strong> — checksum-based loads make ingestion idempotent.</p>
+    </section>
+
+    <!-- D: Architecture -->
+    <section class="case-section" aria-labelledby="arch-title">
+      <p class="case-kicker">03 — SYSTEM ARCHITECTURE</p>
+      <h2 id="arch-title" class="case-h2">How the system fits together</h2>
+      <div class="arch-flow" role="img" aria-label="Architecture: Official Nintendo investor data flows through Python ETL and validation into a PostgreSQL warehouse, then dbt transformations into analytical data marts, then to Streamlit dashboards and Tableau-ready exports, with forecasting and monitoring alongside.">
+        <div class="arch-node"><b>Official Nintendo IR Data</b><span>Investor pages &amp; historical workbooks</span></div><span class="arch-arrow" aria-hidden="true">→</span>
+        <div class="arch-node"><b>Python ETL &amp; Validation</b><span>Per-document, transactional, checksum-idempotent</span></div><span class="arch-arrow" aria-hidden="true">→</span>
+        <div class="arch-node"><b>PostgreSQL Warehouse</b><span><code>raw_official</code> · <code>ref</code> · <code>meta</code></span></div><span class="arch-arrow" aria-hidden="true">→</span>
+        <div class="arch-node"><b>dbt Transformations</b><span>Staging views, tests &amp; documentation</span></div><span class="arch-arrow" aria-hidden="true">→</span>
+        <div class="arch-node"><b>5 Analytical Marts</b><span><code>mart_reported</code></span></div>
+      </div>
+      <div class="arch-branch">
+        <div class="arch-node"><b>Streamlit Dashboard &amp; Tableau Exports</b><span>6 pages queried live · 5 mart CSVs + build guide</span></div>
+        <div class="arch-node"><b>Forecasting &amp; Monitoring</b><span><code>forecast</code> schema · <code>meta.monitoring_*</code> alerts</span></div>
+      </div>
+      <div class="case-copy" style="margin-top:1.75rem;">
+        <p>The orchestrator — <code>python -m nih pipeline run</code> — sequences ingest → audit → dbt build → monitoring under an advisory lock and records every run. A small synthetic weekly dataset (48 rows) exists only to prove isolation discipline: it lives in a separate schema and dbt tests fail if a synthetic label ever appears in an official mart.</p>
+      </div>
+    </section>
+
+    <!-- E: Data Engineering -->
+    <section class="case-section" aria-labelledby="de-title">
+      <p class="case-kicker">04 — DATA ENGINEERING</p>
+      <h2 id="de-title" class="case-h2">Engineering the warehouse</h2>
+      <div class="card-grid">
+        <article class="info-card"><h3 class="case-h3">Sourcing &amp; ingestion</h3><p>Genuine Nintendo IR material only: the hardware/software unit-sales page, top-selling title pages, and historical regional-sales and consolidated-income workbooks. Loads are per-document and transactional; a failed download changes nothing, and unavailable sources are reported — never substituted.</p></article>
+        <article class="info-card"><h3 class="case-h3">Cleaning &amp; validation</h3><p>Per-source parsers handle decades of layout drift with rejection accounting — every rejected cell is explained. Negative disclosed values are preserved as reported (legitimate returns and revisions), not “cleaned” away.</p></article>
+        <article class="info-card"><h3 class="case-h3">PostgreSQL schema design</h3><p>Layered schemas separate concerns: <code>ref</code> dimensions, <code>raw_official</code> disclosures as printed, dbt <code>staging</code> views, <code>mart_reported</code> analytics, plus <code>meta</code> (document registry, pipeline runs, monitoring) and a separate <code>forecast</code> schema so predictions never contaminate reported facts.</p></article>
+        <article class="info-card"><h3 class="case-h3">dbt transformations</h3><p>Five documented marts: annual platform performance, regional performance, hardware/software trends, lifetime snapshots, and financial performance. Fiscal logic is implemented once in Python and mirrored in SQL — Nintendo's year ends March 31, and quarters are derived only from adjacent year-to-date spans.</p></article>
+        <article class="info-card"><h3 class="case-h3">Data quality testing</h3><p>72 dbt results (schema and singular tests reconciling marts back to disclosures) plus 100+ Python tests covering fiscal logic, parsing, idempotency, monitoring lifecycle, dashboard calculations, and forecast leakage.</p></article>
+        <article class="info-card"><h3 class="case-h3">Reproducibility</h3><p>Checksum-based loads make reruns no-ops (verified: 2,323 records unchanged). Docker Compose provisions PostgreSQL 16; one command runs the full pipeline, and the forecasting job is independently runnable with a versioned model run.</p></article>
+      </div>
+    </section>
+
+    <!-- F: Dashboard -->
+    <section class="case-section" aria-labelledby="dash-title">
+      <p class="case-kicker">05 — BUSINESS INTELLIGENCE DASHBOARD</p>
+      <h2 id="dash-title" class="case-h2">Six-page Streamlit dashboard</h2>
+      <div class="page-list">
+        <div class="page-item"><span>PAGE 01</span><h3 class="case-h3">Executive Overview</h3><p>Worldwide hardware/software sell-in and consolidated financial KPIs for a selected fiscal year, with comparable YoY only when the platform set is unchanged.</p></div>
+        <div class="page-item"><span>PAGE 02</span><h3 class="case-h3">Hardware &amp; Software</h3><p>Per-platform annual flows, software-per-hardware attach rates, cross-platform comparison, and life-to-date snapshots kept strictly separate from annual sales.</p></div>
+        <div class="page-item"><span>PAGE 03</span><h3 class="case-h3">Regional Performance</h3><p>Regional sell-in under a single region definition, with share of the disclosed worldwide total only where the breakdown is complete.</p></div>
+        <div class="page-item"><span>PAGE 04</span><h3 class="case-h3">Financial Intelligence</h3><p>Consolidated net sales, operating/ordinary profit, profit attributable to owners, calculated margins, and growth — labelled as Nintendo Co., Ltd. group results.</p></div>
+        <div class="page-item"><span>PAGE 05</span><h3 class="case-h3">Pipeline Health</h3><p>Run history, durations, inserted/updated/unchanged counts proving idempotent loads, monitoring alerts, and source freshness.</p></div>
+        <div class="page-item"><span>PAGE 06</span><h3 class="case-h3">Predictive Analytics</h3><p>Backtested forecasts with the selected model, fold count, and error metrics beside the prediction — plus an explicit not-Nintendo-guidance disclaimer.</p></div>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-card">
+          <button type="button" data-lightbox="../../assets/nintendo/executive-overview.jpg" data-title="Executive Overview" data-alt="Executive Overview dashboard showing worldwide hardware and software KPI cards for FY3/2026, consolidated net sales, and operating profit with margin" aria-label="Enlarge Executive Overview screenshot"><img class="gallery-img" src="../../assets/nintendo/executive-overview.jpg" alt="Executive Overview dashboard showing worldwide hardware and software KPI cards for FY3/2026, consolidated net sales, and operating profit with margin" width="1024" height="647" loading="lazy" /></button>
+          <figcaption><strong>01 · EXECUTIVE OVERVIEW</strong>The recruiter's starting point: worldwide annual sell-in and consolidated financial KPIs. Click to enlarge.</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <button type="button" data-lightbox="../../assets/nintendo/platform-performance.jpg" data-title="Hardware and Software" data-alt="Platform Performance dashboard for the Nintendo Switch family showing annual hardware units, software units, and software per hardware unit for FY3/2026" aria-label="Enlarge Hardware and Software screenshot"><img class="gallery-img" src="../../assets/nintendo/platform-performance.jpg" alt="Platform Performance dashboard for the Nintendo Switch family showing annual hardware units, software units, and software per hardware unit for FY3/2026" width="1024" height="647" loading="lazy" /></button>
+          <figcaption><strong>02 · HARDWARE &amp; SOFTWARE</strong>Per-platform flows with family/component double-counting prevented structurally. Click to enlarge.</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <button type="button" data-lightbox="../../assets/nintendo/predictive-analytics.jpg" data-title="Predictive Analytics" data-alt="Predictive Analytics dashboard showing training observations, the selected naive model, backtest folds and RMSE, and a forecast chart for consolidated net sales" aria-label="Enlarge Predictive Analytics screenshot"><img class="gallery-img" src="../../assets/nintendo/predictive-analytics.jpg" alt="Predictive Analytics dashboard showing training observations, the selected naive model, backtest folds and RMSE, and a forecast chart for consolidated net sales" width="1024" height="647" loading="lazy" /></button>
+          <figcaption><strong>06 · PREDICTIVE ANALYTICS</strong>The naive model honestly wins the backtest on consolidated net sales — and the page says so. Click to enlarge.</figcaption>
+        </figure>
+        <figure class="gallery-card">
+          <button type="button" data-lightbox="../../assets/nintendo/pipeline-health.jpg" data-title="Pipeline Health" data-alt="Pipeline Health dashboard showing the latest succeeded pipeline run, duration, extracted record counts, and execution history" aria-label="Enlarge Pipeline Health screenshot"><img class="gallery-img" src="../../assets/nintendo/pipeline-health.jpg" alt="Pipeline Health dashboard showing the latest succeeded pipeline run, duration, extracted record counts, and execution history" width="1024" height="647" loading="lazy" /></button>
+          <figcaption><strong>05 · PIPELINE HEALTH</strong>Operational transparency: run history and record counts, with monitoring and freshness below. Click to enlarge.</figcaption>
+        </figure>
+      </div>
+      <p class="callout">Screenshots are authentic captures of the dashboard running against the local warehouse (the app is not yet publicly deployed). Regional Performance and Financial Intelligence are fully implemented pages; no screenshots were available in the repository for them, so none are shown here rather than fabricating images. The same five marts are also exported as <strong>Tableau-ready CSVs</strong> with a documented build guide.</p>
+    </section>
+
+    <!-- G: Forecasting -->
+    <section class="case-section" aria-labelledby="fc-title">
+      <p class="case-kicker">06 — FORECASTING &amp; PREDICTIVE ANALYTICS</p>
+      <h2 id="fc-title" class="case-h2">Forecasting, honestly evaluated</h2>
+      <div class="case-copy">
+        <p>Forecasting was included to answer a planning question — what does a defensible baseline extrapolation of platform and financial performance look like? — and, just as importantly, to demonstrate how model claims should be validated before anyone quotes them.</p>
+      </div>
+      <div class="model-table-wrap" style="margin-top:1.75rem;">
+        <table>
+          <caption class="hidden">Nine forecasting models evaluated, from naive baselines to ARIMA</caption>
+          <thead><tr><th scope="col">Family</th><th scope="col">Models</th><th scope="col">Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Baselines</td><td>Naive (last value) · Historical mean · 3-year moving average · Drift · Linear trend</td><td>Always available; genuinely competitive on short, lifecycle-dominated annual series.</td></tr>
+            <tr><td>Statistical (statsmodels)</td><td>Simple exponential smoothing · Holt trend · Damped Holt · ARIMA(1,1,0)</td><td>Minimum-observation gates (≥5, ≥6, ≥6, ≥12). Fit failures are counted, never silently replaced.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-grid" style="margin-top:1rem;">
+        <article class="info-card"><h3 class="case-h3">Expanding-window backtesting</h3><p>Each fold trains only on years strictly before its target year, and is scored only when the target directly follows the training window — <strong>980 scored folds</strong> in total. A spy-model test proves training never sees the target year.</p></article>
+        <article class="info-card"><h3 class="case-h3">Model comparison &amp; selection</h3><p>Models are compared on MAE, RMSE, bias, and (where meaningful) WAPE/sMAPE. Selection needs ≥3 folds and prefers a simpler model within 10% of the best RMSE — on consolidated net sales, the naive forecast wins, and the system reports that.</p></article>
+        <article class="info-card"><h3 class="case-h3">Three-year forecasts</h3><p>Eligible series receive a 3-year horizon stored in the separate <code>forecast</code> schema with the selected model, fold count, and metrics attached. Retired platforms (16 series) and the launch-year Switch 2 series are excluded by rule rather than forecast with invented confidence; only 8 of 26 series are forecast.</p></article>
+        <article class="info-card"><h3 class="case-h3">Uncertainty &amp; limitations</h3><p>80% intervals use a normal approximation over backtest RMSE. They are <strong>approximate and not empirically calibrated</strong>: leakage-free historical coverage is 63% on consolidated net sales against the 80% nominal band, and that gap is reported, not hidden. Annual series are short and lifecycle-dominated, so forecasts are baseline extrapolations — not guaranteed predictions and never Nintendo guidance.</p></article>
+      </div>
+    </section>
+
+    <!-- H: Monitoring -->
+    <section class="case-section" aria-labelledby="mon-title">
+      <p class="case-kicker">07 — MONITORING &amp; DATA QUALITY</p>
+      <h2 id="mon-title" class="case-h2">Monitoring that earns trust</h2>
+      <div class="card-grid">
+        <article class="info-card"><h3 class="case-h3">Automated pipeline checks</h3><p>Every pipeline run evaluates pipeline, data-quality, business-movement, and freshness rules after the dbt build. A monitoring failure fails the run rather than passing silently.</p></article>
+        <article class="info-card"><h3 class="case-h3">Validation &amp; reconciliation</h3><p>Checks cover duplicate grains, schema drift, missing documents, and regional reconciliation against the disclosed worldwide total. A live evaluation flags exactly the four regional reconciliations exceeding documented thresholds.</p></article>
+        <article class="info-card"><h3 class="case-h3">Freshness &amp; anomaly detection</h3><p>Historical disclosures are judged on their publication schedule, not daily age. Annual business movements are scored with YoY and MAD-based robust statistics; known legitimate conditions (negative revisions, incomplete 1990s breakdowns) are excluded by construction.</p></article>
+        <article class="info-card"><h3 class="case-h3">Alert deduplication &amp; lifecycle</h3><p>Alerts are fingerprint-deduplicated (re-running creates 0 duplicates) with an audited acknowledge / resolve / reopen lifecycle. The system even resolves its own stale failure alert once the pipeline is healthy again.</p></article>
+      </div>
+      <p class="callout">Testing backs this up: <strong>100+ Python tests</strong> and <strong>72 dbt results, 0 failures</strong> — including tests that fail the build if synthetic data ever appears in an official mart.</p>
+    </section>
+
+    <!-- I: Challenges -->
+    <section class="case-section" aria-labelledby="ch-title">
+      <p class="case-kicker">08 — TECHNICAL CHALLENGES</p>
+      <h2 id="ch-title" class="case-h2">Challenges &amp; engineering decisions</h2>
+      <article class="challenge-card"><h3 class="case-h3">1 · Cumulative spans masquerading as quarters</h3><p><strong>Challenge:</strong> Nintendo's Q1–Q3 columns are cumulative year-to-date spans, not quarters — and there are no quarterly financial columns to fabricate from.</p><p class="decision"><strong>Decision:</strong> A span-aware period model implemented in Python and mirrored as a dbt macro; incremental quarters are derived only from adjacent YTD spans. The quarterly marts are honestly empty, and the dashboard says so instead of inventing quarterly values.</p></article>
+      <article class="challenge-card"><h3 class="case-h3">2 · Preventing forecasting data leakage</h3><p><strong>Challenge:</strong> With 10–36 annual observations per series, a single leaked target year would flatter every metric.</p><p class="decision"><strong>Decision:</strong> Expanding-window folds train strictly before the target, score only gap-free one-year-ahead folds, and are guarded by a spy-model test. Missing years stay missing — never zero-filled — and life-to-date snapshots never enter a training set.</p></article>
+      <article class="challenge-card"><h3 class="case-h3">3 · Heterogeneous reporting formats across decades</h3><p><strong>Challenge:</strong> Workbook layouts, printed scales, and regional definitions drift over 35+ years; family totals already include component models, and <code>GLOBAL</code> already includes regions.</p><p class="decision"><strong>Decision:</strong> Per-source parsers with rejection accounting, scale-aware reconciliation thresholds, and structural safeguards (<code>include_in_cross_platform_total</code>, never combining regional layouts) enforced by dbt tests — so double-counting is impossible by construction, not by analyst care.</p></article>
+      <article class="challenge-card"><h3 class="case-h3">4 · Separating official observations from generated forecasts</h3><p><strong>Challenge:</strong> Forecasts or synthetic demo data leaking into reported figures would destroy the project's credibility.</p><p class="decision"><strong>Decision:</strong> Forecasts live only in the <code>forecast</code> schema, synthetic rows only in <code>raw_simulated</code>, and dbt tests fail if a synthetic label appears in an official mart. The dashboard reads stored forecast runs and never retrains.</p></article>
+      <article class="challenge-card"><h3 class="case-h3">5 · Safe read-only access for a public demo</h3><p><strong>Challenge:</strong> A deployed dashboard must never be able to write facts, read raw schemas, or retrain models.</p><p class="decision"><strong>Decision:</strong> A verified PostgreSQL read-only role (<code>nih_dashboard</code>) with SELECT only on marts/forecast/meta, a connection limit and statement timeout, and default privileges that survive dbt view rebuilds. Deployment is fully prepared; going live awaits the owner's cloud accounts.</p></article>
+    </section>
+
+    <!-- J: Results -->
+    <section class="case-section" aria-labelledby="res-title">
+      <p class="case-kicker">09 — RESULTS &amp; TAKEAWAYS</p>
+      <h2 id="res-title" class="case-h2">What this demonstrates</h2>
+      <div class="two-col">
+        <div class="case-copy">
+          <p><strong>Delivered:</strong> an end-to-end platform that ingests 2,323 official records idempotently, transforms them into five tested dbt marts, serves a six-page live dashboard and Tableau-ready exports, monitors its own data quality with deduplicated alerts, and produces backtested three-year forecasts with honestly labelled uncertainty.</p>
+          <p>The strongest lesson was that <strong>correctness is a feature</strong>: grain rules, provenance, and reconciliation tests are what turn public disclosures into numbers a decision-maker can defend.</p>
+        </div>
+        <div class="case-copy">
+          <p><strong>Engineering lessons:</strong> design safeguards structurally (flags and schema separation) rather than by convention; prefer simpler models when backtests say so; and report interval coverage honestly — 63% against an 80% nominal band is information, not failure.</p>
+          <p><strong>Future work (not yet implemented):</strong> quarterly disclosure parsing when a defensible source exists, forecast reconciliation across platform scopes, scheduled monitoring notifications, and public deployment of the dashboard using the prepared read-only role.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- K: Links -->
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">10 — PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links">
+        <a class="btn-primary" href="https://github.com/lukastien/nintendo-intelligence-hub" target="_blank" rel="noopener noreferrer">GitHub Repository →</a>
+        <a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a>
+      </div>
+      <p class="callout">The Streamlit dashboard currently runs locally against Docker-provisioned PostgreSQL (<code>docker compose up -d --wait</code>, then <code>python -m nih pipeline run</code> and <code>streamlit run dashboards/app.py</code>). It is <strong>not publicly deployed</strong>, so no live-app link is provided here — deployment instructions and a verified read-only role are documented in the repository.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 LUKAS TIEN</p>
+    <p class="footer-note">Built with curiosity.</p>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Enlarged dashboard screenshot">
+    <div class="lightbox-bar"><span class="lightbox-title">Dashboard screenshot</span><button class="lightbox-close" type="button">Close ✕</button></div>
+    <img src="" alt="" />
+  </dialog>
+
+  <script src="../../script.js"></script>
+  <script src="project.js"></script>
+</body>
+</html>
