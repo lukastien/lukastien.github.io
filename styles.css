@@ -217,60 +217,44 @@ main {
 }
 
 .section {
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-2xl);
+  padding-top: clamp(3.5rem, 8vw, 5.5rem);
+  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
   border-top: 1px solid var(--border);
 }
 
 .section-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
   letter-spacing: -0.02em;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 2.25rem;
 }
 
 /* ========================================
-   Hero
+   Intro (About)
    ======================================== */
 
-.hero {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: calc(var(--header-h) + var(--space-lg));
-  padding-bottom: var(--space-xl);
-  background:
-    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(242, 240, 235, 0.03) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(200, 194, 180, 0.025) 0%, transparent 50%);
+.intro {
+  padding-top: calc(var(--header-h) + clamp(2.5rem, 6vw, 4.5rem));
+  padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
 }
 
-.hero-name {
+.intro-name {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(3rem, 10vw, 7.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
 }
 
-.hero-role {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(0.8125rem, 1.6vw, 1rem);
-  letter-spacing: 0.18em;
-  color: var(--text);
-  margin-bottom: 0.75rem;
-}
-
-.hero-fields {
+.intro-role {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(0.6875rem, 1.3vw, 0.8125rem);
-  letter-spacing: 0.16em;
+  font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
+  letter-spacing: 0.06em;
   color: var(--text-muted);
+  margin-bottom: 2.5rem;
 }
 
 /* ========================================
@@ -358,7 +342,7 @@ main {
 .timeline-heading {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.15rem, 2.8vw, 1.75rem);
+  font-size: clamp(1.05rem, 2.4vw, 1.45rem);
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 0.75rem;
@@ -379,165 +363,14 @@ main {
 .timeline-tech {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: 0.625rem;
-  letter-spacing: 0.14em;
-  color: var(--text-faint);
-  margin-bottom: 0.85rem;
-}
-
-.timeline-repo {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 600;
   font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.15rem;
-  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-bottom: 0;
+  line-height: 1.6;
 }
 
-.timeline-repo:hover {
-  color: var(--text);
-  border-bottom-color: var(--text);
-}
 
-/* ========================================
-   Featured Project
-   ======================================== */
-
-.featured-project {
-  border: 1px solid var(--border-strong);
-  background: var(--bg-elevated);
-  margin-bottom: var(--space-xl);
-}
-
-.featured-media {
-  position: relative;
-  border-bottom: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.featured-media img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.6s var(--ease), opacity 0.3s var(--ease);
-}
-
-.featured-media a:hover img,
-.featured-media a:focus-visible img {
-  transform: scale(1.015);
-  opacity: 0.92;
-}
-
-.featured-media a:focus-visible {
-  outline: 2px solid var(--text);
-  outline-offset: -2px;
-}
-
-.featured-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.625rem;
-  letter-spacing: 0.16em;
-  color: var(--bg);
-  background: var(--text);
-  padding: 0.4rem 0.7rem;
-  pointer-events: none;
-}
-
-.featured-body {
-  padding: clamp(1.5rem, 3.5vw, 2.75rem);
-}
-
-.featured-heading {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  margin-bottom: 0.5rem;
-}
-
-.featured-subtitle {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: var(--accent-serif);
-  margin-bottom: 1.25rem;
-}
-
-.featured-highlights {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.85rem 2rem;
-  margin: 1.5rem 0;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.featured-highlights li {
-  position: relative;
-  padding-left: 1rem;
-  color: var(--text-muted);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-}
-
-.featured-highlights li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.65em;
-  width: 0.35rem;
-  height: 1px;
-  background: var(--border-strong);
-}
-
-.featured-highlights strong {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.featured-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1rem 2rem;
-  margin-top: 1.5rem;
-}
-
-.featured-cta {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  color: var(--bg);
-  background: var(--text);
-  padding: 0.85rem 1.4rem;
-  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
-}
-
-.featured-cta:hover,
-.featured-cta:focus-visible {
-  opacity: 0.85;
-  transform: translateY(-1px);
-}
-
-@media (max-width: 780px) {
-  .featured-highlights {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-links {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
 
 /* ========================================
    Work Experience
@@ -606,11 +439,11 @@ main {
 .about-lead {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.5rem, 4vw, 2.75rem);
+  font-size: clamp(1.35rem, 3.5vw, 2.25rem);
   line-height: 1.15;
   letter-spacing: -0.025em;
   max-width: 18ch;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 1.75rem;
 }
 
 .about-content {
@@ -712,23 +545,23 @@ main {
     display: flex;
   }
 
-  .hero {
+  .intro {
     padding-top: calc(var(--header-h) + 2rem);
-    padding-bottom: 3rem;
+    padding-bottom: 3.5rem;
   }
 
-  .hero-name {
-    font-size: clamp(2.75rem, 14vw, 4.5rem);
+  .intro-name {
+    font-size: clamp(2.25rem, 11vw, 3rem);
   }
 
-  .hero-fields {
-    letter-spacing: 0.1em;
+  .intro-role {
     line-height: 1.6;
+    margin-bottom: 2rem;
   }
 
   .section {
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-xl);
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 
   .timeline::before {
@@ -844,22 +677,4 @@ main {
   outline-offset: 3px;
 }
 
-.timeline-view {
-  position: relative;
-  z-index: 2;
-  display: inline-block;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  padding: 0.35rem 0 0.15rem;
-  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
-}
 
-.timeline-view:hover,
-.timeline-view:focus-visible {
-  color: var(--text);
-  border-bottom-color: var(--text);
-}
