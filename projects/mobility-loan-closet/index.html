@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A low-code equipment-lending system: AppSheet app over a 3-table Google Sheets relational database, with automation emails and a Google Apps Script JSON POST integration that syncs loan events to an external API endpoint." />
+  <title>Mobility Loan Closet — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Mobility Loan Closet | Lukas Tien" />
+  <meta property="og:description" content="A low-code equipment-lending system: AppSheet app over a 3-table Google Sheets relational database, with automation emails and a Google Apps Script JSON POST integration that syncs loan events to an external API endpoint." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/mobility-loan-closet/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 08 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">MOBILITY<br />LOAN CLOSET</h1>
+      <p class="case-subtitle">Digitising equipment lending for community loan closets</p>
+      <div class="case-meta"><span>PROJECT 08</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A low-code equipment-lending system: AppSheet app over a 3-table Google Sheets relational database, with automation emails and a Google Apps Script JSON POST integration that syncs loan events to an external API endpoint.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/loan-closet-tracker" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">APPSHEET · GOOGLE SHEETS · GOOGLE APPS SCRIPT · AUTOMATION · API INTEGRATION</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov8"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov8" class="case-h2">The problem & the solution</h2><div class="two-col"><div class="case-copy"><p>Community loan closets, schools, and non-profits lend shared equipment — wheelchairs, medical and educational gear — often tracked on paper logs or a single spreadsheet. The failure modes are familiar: lost or overdue inventory with no reminder trigger, double-bookings because availability isn't live, and volunteers burning out on manual follow-up.</p><p><strong>Mobility Loan Closet</strong> (the Loan Closet Tracker) digitises the whole checkout loop: an AppSheet app for checkout/return, a Google Sheets relational database, automation that emails borrowers, and an Apps Script integration that posts loan events to an external API endpoint.</p></div><div class="case-copy"><p>Built for the people who actually run these closets — volunteers and coordinators — so it is deliberately low-code: no server to maintain, works on phone and desktop, and every checkout updates availability in real time.</p></div></div></section>
+    <section class="case-section" aria-labelledby="tech8"><p class="case-kicker">02 — TECHNICAL IMPLEMENTATION</p><h2 id="tech8" class="case-h2">System design</h2><div class="arch-flow" role="img" aria-label="Workflow: AppSheet App then Google Sheets Database then AppSheet Automation Bot then Email Task then Apps Script → API"><div class="arch-node"><b>AppSheet App</b><span>Checkout / return UI · slices &amp; filters</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Google Sheets Database</b><span>Equipment · Borrowers · Loans</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>AppSheet Automation Bot</b><span>Fires on data conditions</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Email Task</b><span>Borrower confirmations</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Apps Script → API</b><span>JSON POST to external endpoint</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Relational schema (3 tables)</h3><p><strong>Equipment</strong> (EquipmentID, name, category, condition, status), <strong>Borrowers</strong> (BorrowerID, name, email, phone), and <strong>Loans</strong> (LoanID, EquipmentID → Equipment, BorrowerID → Borrowers, loan/return dates, status) — proper reference keys in Sheets, keyed with <code>UNIQUEID()</code>.</p></article><article class="info-card"><h3 class="case-h3">Live availability</h3><p>AppSheet data slices with conditional expressions (e.g. <code>[Status] = "Available"</code>) so the catalogue only shows what can actually be lent — attacking double-booking at the UI layer.</p></article><article class="info-card"><h3 class="case-h3">Automation</h3><p>An event-driven AppSheet bot watches for checkout/return conditions and branches into a dynamic HTML email confirmation and an Apps Script webhook task.</p></article><article class="info-card"><h3 class="case-h3">API integration</h3><p><code>sendLoanToAPI()</code> in Google Apps Script packages loan data as JSON and POSTs it via <code>UrlFetchApp.fetch</code> with error handling (<code>muteHttpExceptions</code> + try/catch) — demonstrating how the closet can sync to an external CRM (e.g. HubSpot-style) endpoint.</p></article></div></div><p class="callout">The API endpoint in the published code is a <strong>mock/example endpoint</strong> demonstrating the integration pattern — the payload shape, POST mechanics, and error handling are real; no production CRM is connected.</p></section>
+    <section class="case-section" aria-labelledby="ch8"><p class="case-kicker">03 — CHALLENGES & DECISIONS</p><h2 id="ch8" class="case-h2">Challenges & decisions</h2><article class="challenge-card"><h3 class="case-h3">Relational discipline in a spreadsheet</h3><p><strong>Challenge:</strong> Sheets invites one giant table, which would tangle inventory, people, and loan history together.</p><p class="decision"><strong>Decision:</strong> Model three normalised tables with reference keys, mirroring how the same system would be designed in SQL — the low-code tool does not excuse a flat data model.</p></article><article class="challenge-card"><h3 class="case-h3">Volunteer-proof UX</h3><p><strong>Challenge:</strong> If checkout takes more than a few taps, staff revert to paper and the data rots.</p><p class="decision"><strong>Decision:</strong> Put availability filtering (slices) and one-tap status changes in the app, and let automations — not humans — send confirmations and sync records.</p></article><article class="challenge-card"><h3 class="case-h3">Proving external sync without a real CRM</h3><p><strong>Challenge:</strong> There is no production CRM to integrate against for a community project.</p><p class="decision"><strong>Decision:</strong> Build the full JSON POST path against a mock endpoint with production-style error handling, and label it as a demonstration in the repo.</p></article></section>
+    <section class="case-section" aria-labelledby="next8"><p class="case-kicker">04 — NEXT STEPS</p><h2 id="next8" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> AppSheet app, 3-table Sheets schema, availability slices, automation bot with email confirmations, Apps Script JSON POST integration, architecture and schema documentation with app screenshots in the repository README.</p><p><strong>Future work (not yet done):</strong> connect a real CRM endpoint; automated overdue-reminder scheduling; usage reporting (most-loaned items, overdue rates) for coordinators. App screenshots live in the GitHub README (hosted there); they are not copied here, so this page uses the verified architecture diagram above instead.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/loan-closet-tracker" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../markov-market-modeling/"><span>← PREVIOUS PROJECT</span>Markov Chain Market Modeling</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../arbfinder/"><span>NEXT PROJECT →</span>ArbFinder</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

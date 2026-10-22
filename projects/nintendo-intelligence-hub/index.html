@@ -14,9 +14,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../../styles.css" />
-  <link rel="stylesheet" href="project.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
     <nav class="nav" aria-label="Primary">
@@ -34,7 +36,7 @@
     <a href="../../index.html#contact">CONTACT</a>
   </nav>
 
-  <main class="case-main">
+  <main class="case-main" id="main">
     <!-- A: Hero -->
     <section class="case-section case-hero" aria-labelledby="case-title">
       <p class="case-kicker">FEATURED PROJECT · CASE STUDY</p>
@@ -227,6 +229,11 @@
         <a class="btn-primary" href="https://github.com/lukastien/nintendo-intelligence-hub" target="_blank" rel="noopener noreferrer">GitHub Repository →</a>
         <a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a>
       </div>
+      <nav class="project-nav" aria-label="Project navigation">
+        <div class="is-empty nav-prev"><span>← PREVIOUS PROJECT</span>—</div>
+        <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+        <a class="nav-next" href="../employee-attrition/"><span>NEXT PROJECT →</span>Employee Attrition &amp; Retention Analysis</a>
+      </nav>
       <p class="callout">The Streamlit dashboard currently runs locally against Docker-provisioned PostgreSQL (<code>docker compose up -d --wait</code>, then <code>python -m nih pipeline run</code> and <code>streamlit run dashboards/app.py</code>). It is <strong>not publicly deployed</strong>, so no live-app link is provided here — deployment instructions and a verified read-only role are documented in the repository.</p>
     </section>
   </main>
@@ -242,6 +249,6 @@
   </dialog>
 
   <script src="../../script.js"></script>
-  <script src="project.js"></script>
+  <script src="../../case-study.js"></script>
 </body>
 </html>

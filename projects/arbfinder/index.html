@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A frontend TypeScript web app for sports-betting arbitrage: custom markets, a validated American-odds grid across sportsbooks, automatic arbitrage detection (Σ implied probability < 1), optimal stake allocation, combination rankings, and local-storage persistence — no backend." />
+  <title>ArbFinder — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="ArbFinder | Lukas Tien" />
+  <meta property="og:description" content="A frontend TypeScript web app for sports-betting arbitrage: custom markets, a validated American-odds grid across sportsbooks, automatic arbitrage detection (Σ implied probability < 1), optimal stake allocation, combination rankings, and local-storage persistence — no backend." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/arbfinder/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 09 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">ARBFINDER</h1>
+      <p class="case-subtitle">Sports-betting arbitrage, calculated correctly and instantly</p>
+      <div class="case-meta"><span>PROJECT 09</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A frontend TypeScript web app for sports-betting arbitrage: custom markets, a validated American-odds grid across sportsbooks, automatic arbitrage detection (Σ implied probability < 1), optimal stake allocation, combination rankings, and local-storage persistence — no backend.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/arbfinder" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · APIS · DATA ANALYSIS</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov9"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov9" class="case-h2">The project</h2><div class="two-col"><div class="case-copy"><p>Sports-betting arbitrage exists when different sportsbooks price the same event inconsistently enough that the combined implied probability of all outcomes drops below 100% — letting a bettor cover every outcome and lock in a profit regardless of the result. Spotting that by hand, and sizing the stakes correctly, is tedious and error-prone.</p><p><strong>ArbFinder</strong> is a frontend web application that automates the whole workflow: define a market with any number of outcomes, enter each sportsbook's American odds in a spreadsheet-style grid, and instantly get arbitrage detection, optimal stake allocation, ROI, and a ranking of every sportsbook combination.</p></div><div class="case-copy"><p>Built for bettors and odds-comparison hobbyists who want correct math without a spreadsheet. There is <strong>no backend and no live odds feed</strong>: odds are entered manually, and all markets, odds, and bankroll settings persist in browser local storage. (An earlier homepage summary mentioned APIs — the shipped app does not call external APIs; this page describes what is actually implemented.)</p></div></div></section>
+    <section class="case-section" aria-labelledby="tech9"><p class="case-kicker">02 — TECHNICAL IMPLEMENTATION</p><h2 id="tech9" class="case-h2">How it works</h2><div class="arch-flow" role="img" aria-label="Workflow: Create Market then Enter Odds then Detect Arbitrage then Allocate Stakes then Rank Combinations"><div class="arch-node"><b>Create Market</b><span>Custom outcomes · 2-way to multi-way</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Enter Odds</b><span>American odds grid · live validation</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Detect Arbitrage</b><span>Best odds per outcome · Σ implied prob &lt; 1</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Allocate Stakes</b><span>Equal payout across outcomes</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Rank Combinations</b><span>Every book combo sorted by ROI</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Arbitrage math</h3><p>For each outcome the best odds across books are converted to implied probability; if <code>Σ (1 / decimal_odds) &lt; 1</code>, an arbitrage exists. Stakes follow <code>stake_i = (bankroll / Σ implied) / decimal_odds_i</code>, guaranteeing an equal payout whichever outcome wins.</p></article><article class="info-card"><h3 class="case-h3">Application engineering (TypeScript)</h3><p>A component-based frontend (<code>src/components/</code>: odds table, odds heatmap, arbitrage summary, bet allocation, rankings, bankroll control, market sidebar) over a tested calculation core (<code>src/lib/arbitrage.ts</code>, <code>src/lib/odds.ts</code>) with a <code>scripts/verify-core.mjs</code> verification script for the math.</p></article><article class="info-card"><h3 class="case-h3">UX details</h3><p>Inline validation catches malformed American odds (<code>+110</code>, <code>−120</code>) as you type; a colour-coded heatmap highlights best/worst odds per outcome; a bankroll slider ($100–$10,000) rescales every stake instantly; markets can be created, duplicated, renamed, and switched from the sidebar; light/dark themes are supported.</p></article><article class="info-card"><h3 class="case-h3">Persistence without a backend</h3><p>Custom hooks (<code>use-markets</code>, <code>use-local-storage</code>) persist all state locally — zero accounts, zero server, works offline after load.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="ch9"><p class="case-kicker">03 — CHALLENGES & DECISIONS</p><h2 id="ch9" class="case-h2">Challenges & decisions</h2><article class="challenge-card"><h3 class="case-h3">Correctness of the core math</h3><p><strong>Challenge:</strong> A rounding or conversion slip silently turns 'guaranteed profit' into a guaranteed loss.</p><p class="decision"><strong>Decision:</strong> Isolate arbitrage/odds math in a pure library (<code>src/lib/</code>) and verify it with a dedicated script, separate from UI code.</p></article><article class="challenge-card"><h3 class="case-h3">Combinatorial ranking</h3><p><strong>Challenge:</strong> Ranking every sportsbook combination grows combinatorially with books × outcomes.</p><p class="decision"><strong>Decision:</strong> Evaluate combinations systematically and rank by ROI with expandable per-outcome stake detail, keeping the summary panel to the single best opportunity.</p></article><article class="challenge-card"><h3 class="case-h3">No live odds feed</h3><p><strong>Challenge:</strong> Real odds APIs are paywalled/rate-limited and would need a backend and keys.</p><p class="decision"><strong>Decision:</strong> Ship a manual-entry tool with strong validation and persistence instead — and describe it accurately rather than implying live data.</p></article></section>
+    <section class="case-section" aria-labelledby="next9"><p class="case-kicker">04 — NEXT STEPS</p><h2 id="next9" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> market creation (unlimited outcomes), odds grid with validation, arbitrage detection, stake allocation, combination rankings, odds heatmap, bankroll control, local-storage persistence, dark mode, responsive layout.</p><p><strong>Future work (not yet done):</strong> optional live-odds API integration; screenshots in the repository README are still placeholders, so no interface screenshots are shown here; export/share of market setups.</p><p class="callout">ArbFinder is a calculation tool. Arbitrage opportunities are rare, books may limit accounts or void lines, and nothing here is financial advice.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/arbfinder" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../mobility-loan-closet/"><span>← PREVIOUS PROJECT</span>Mobility Loan Closet</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <div class="is-empty nav-next"><span>NEXT PROJECT →</span>—</div>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

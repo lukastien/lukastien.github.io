@@ -788,3 +788,78 @@ main {
     animation-duration: 0.01ms !important;
   }
 }
+
+/* ========================================
+   Clickable Timeline Projects
+   ======================================== */
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 200;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 0.75rem 1rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.timeline-title-link {
+  display: inline;
+}
+
+.timeline-title-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.timeline-arrow {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+  color: var(--text-muted);
+}
+
+.timeline-item:hover .timeline-arrow,
+.timeline-item:focus-within .timeline-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-item:focus-within {
+  outline: 1px solid var(--border-strong);
+  outline-offset: 0.5rem;
+}
+
+.timeline-title-link:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.timeline-view {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding: 0.35rem 0 0.15rem;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.timeline-view:hover,
+.timeline-view:focus-visible {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}

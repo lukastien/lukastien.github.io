@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A SQL, classification-modeling, and cost-modeling project on 1,470 employee records: logistic regression and XGBoost identify overtime as the top attrition driver, flag 31 high-risk employees, and price a targeted retention pilot at ~$455,000 in projected savings." />
+  <title>Employee Attrition & Retention Analysis — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Employee Attrition & Retention Analysis | Lukas Tien" />
+  <meta property="og:description" content="A SQL, classification-modeling, and cost-modeling project on 1,470 employee records: logistic regression and XGBoost identify overtime as the top attrition driver, flag 31 high-risk employees, and price a targeted retention pilot at ~$455,000 in projected savings." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/employee-attrition/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 02 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">EMPLOYEE ATTRITION &amp;<br />RETENTION ANALYSIS</h1>
+      <p class="case-subtitle">Predicting who leaves, why — and what retention is worth</p>
+      <div class="case-meta"><span>JUL 2026</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A SQL, classification-modeling, and cost-modeling project on 1,470 employee records: logistic regression and XGBoost identify overtime as the top attrition driver, flag 31 high-risk employees, and price a targeted retention pilot at ~$455,000 in projected savings.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/employee-attrition-analysis" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · SQL · EXCEL · TABLEAU</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov2"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov2" class="case-h2">The business problem</h2><div class="two-col"><div class="case-copy"><p>Employee turnover is expensive — replacing a departing employee costs recruiting time, training time, and lost productivity. But most retention effort is spread evenly, because managers cannot see <strong>which</strong> employees are at risk or <strong>why</strong>.</p><p>This project answers three questions on a real public HR dataset: which employees are most likely to leave, what factors drive that risk, and how much a targeted retention programme could realistically save.</p></div><div class="case-copy"><p>It is useful to HR analysts and people managers as a template for evidence-based retention: segment the workforce, quantify risk, price the intervention, and only then recommend action.</p><p class="callout">Dataset: the public <strong>IBM HR Analytics Employee Attrition &amp; Performance</strong> dataset — 1,470 employees, 35 features. A self-directed portfolio project; results are illustrative, not advice for a specific employer.</p></div></div></section>
+    <section class="case-section" aria-labelledby="res2"><p class="case-kicker">02 — KEY RESULTS</p><h2 id="res2" class="case-h2">Results & findings</h2><div class="metrics-grid" role="list"><div class="metric" role="listitem"><span class="metric-value">16.1%</span><span class="metric-label">OVERALL ATTRITION<br />237 OF 1,470 EMPLOYEES</span></div><div class="metric" role="listitem"><span class="metric-value">0.81</span><span class="metric-label">LOGISTIC REGRESSION<br />HELD-OUT ROC-AUC</span></div><div class="metric" role="listitem"><span class="metric-value">0.75</span><span class="metric-label">XGBOOST<br />HELD-OUT ROC-AUC</span></div><div class="metric" role="listitem"><span class="metric-value">31</span><span class="metric-label">EMPLOYEES FLAGGED<br />P(ATTRITION) ≥ 45%</span></div><div class="metric" role="listitem"><span class="metric-value">~$455K</span><span class="metric-label">PROJECTED SAVINGS<br />MODELLED, NOT REALISED</span></div></div><p class="callout"><strong>Overtime is the #1 driver in both models:</strong> employees working overtime left at <strong>30.5%</strong> versus <strong>10.4%</strong> without overtime. The ~$455,000 figure is a <strong>projection</strong> from the cost-of-turnover model under documented assumptions — not measured savings.</p></section>
+    <section class="case-section" aria-labelledby="tech2"><p class="case-kicker">03 — TECHNICAL IMPLEMENTATION</p><h2 id="tech2" class="case-h2">How it was built</h2><div class="arch-flow" role="img" aria-label="Workflow: IBM HR Dataset then Python ETL then SQL Analytics then Classification Models then Excel Cost Model then Tableau Extracts"><div class="arch-node"><b>IBM HR Dataset</b><span>1,470 records · 35 features</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Python ETL</b><span>Cleaning &amp; SQLite load</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>SQL Analytics</b><span>Schema + attrition queries</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Classification Models</b><span>Logistic regression · XGBoost</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Excel Cost Model</b><span>Turnover cost &amp; savings</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Tableau Extracts</b><span>Prepared CSVs + build guide</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Data preparation & SQL</h3><p>Designed a relational SQL schema (<code>sql/schema.sql</code>) and documented queries (<code>sql/queries.sql</code>) computing attrition rates by department, tenure, overtime, and salary band — so the headline rates are reproducible SQL, not notebook-only numbers.</p></article><article class="info-card"><h3 class="case-h3">Modeling</h3><p><code>src/model_training.py</code> trains a logistic-regression baseline and an XGBoost classifier, compares held-out ROC-AUC, inspects feature importance (overtime ranks first in both), and exports per-employee risk scores.</p></article><article class="info-card"><h3 class="case-h3">Cost-of-turnover model</h3><p>An Excel workbook (<code>reports/cost_of_turnover.xlsx</code>, built by <code>src/build_cost_model.py</code>) flags the 31 current employees at ≥45% predicted risk and prices a targeted retention pilot against turnover cost.</p></article><article class="info-card"><h3 class="case-h3">Reporting</h3><p>Tableau-ready CSV extracts (<code>dashboard/</code>) with a build guide, plus a strategy brief (<code>reports/strategy_brief.md</code>) written for non-technical stakeholders.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="ch2"><p class="case-kicker">04 — CHALLENGES & DECISIONS</p><h2 id="ch2" class="case-h2">Challenges & decisions</h2><article class="challenge-card"><h3 class="case-h3">A simpler model beat the complex one</h3><p><strong>Challenge:</strong> XGBoost (0.75 ROC-AUC) underperformed logistic regression (0.81) on the held-out test set.</p><p class="decision"><strong>Decision:</strong> Report both honestly and lead with the baseline. On 1,470 rows, a regularised linear model generalising better than a boosted tree is a plausible, publishable result — not a failure to hide.</p></article><article class="challenge-card"><h3 class="case-h3">Turning probabilities into money</h3><p><strong>Challenge:</strong> A risk score alone does not justify budget; a savings claim without assumptions invites scepticism.</p><p class="decision"><strong>Decision:</strong> Document the cost model's assumptions inside the workbook and label ~$455K as projected. The recommendation is a bounded pilot on 31 flagged employees, not a company-wide programme.</p></article><article class="challenge-card"><h3 class="case-h3">Class imbalance</h3><p><strong>Challenge:</strong> Only 16.1% of employees left, so accuracy would reward predicting 'stays' for everyone.</p><p class="decision"><strong>Decision:</strong> Evaluate with ROC-AUC and a risk threshold for flagging (≥45%) instead of raw accuracy.</p></article></section>
+    <section class="case-section" aria-labelledby="next2"><p class="case-kicker">05 — NEXT STEPS</p><h2 id="next2" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> ETL, SQL schema and queries, both models, risk scores, Excel cost model, Tableau extracts, strategy brief.</p><p><strong>Future work (not yet done):</strong> publish the Tableau Public dashboard and link it here (the repository marks this as the owner’s manual step); add fairness checks across demographic groups before any real-world use; validate the risk threshold prospectively rather than on the same dataset.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/employee-attrition-analysis" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../nintendo-intelligence-hub/"><span>← PREVIOUS PROJECT</span>Nintendo Intelligence Hub</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../record-label-analytics/"><span>NEXT PROJECT →</span>Record Label Event & Marketing Analytics</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

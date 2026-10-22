@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A sports-analytics project exploring how well an NBA player fits a team’s style of play — pace, transition offense, shooting, play style, defense, and team needs. Presented here at verified scope; no public repository was available, so no unverified metrics are reported." />
+  <title>NBA Player-Team Fit Analysis — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="NBA Player-Team Fit Analysis | Lukas Tien" />
+  <meta property="og:description" content="A sports-analytics project exploring how well an NBA player fits a team’s style of play — pace, transition offense, shooting, play style, defense, and team needs. Presented here at verified scope; no public repository was available, so no unverified metrics are reported." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/nba-player-fit/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 06 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">NBA PLAYER–TEAM<br />FIT ANALYSIS</h1>
+      <p class="case-subtitle">Does a player’s style match how a team actually plays?</p>
+      <div class="case-meta"><span>PROJECT 06</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A sports-analytics project exploring how well an NBA player fits a team’s style of play — pace, transition offense, shooting, play style, defense, and team needs. Presented here at verified scope; no public repository was available, so no unverified metrics are reported.</p></div>
+      <div class="case-actions"><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · SQL · DATA ANALYSIS · SPORTS ANALYTICS</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov6"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov6" class="case-h2">The project</h2><div class="two-col"><div class="case-copy"><p>When a team considers adding a player, raw production is only half the question — the other half is <strong>fit</strong>: does the player's style match how the team actually plays?</p><p>This project explores that question quantitatively, examining how well an NBA player fits a team's style of play across pace, transition offense, shooting profile, play style, and defense, weighed against team needs.</p></div><div class="case-copy"><p>It is the kind of analysis useful to front-office analysts, sports-media analysts, and anyone building player-evaluation tools: a structured way to argue about compatibility instead of relying on reputation or counting stats alone.</p></div></div><div class="note-box"><strong>Documentation status:</strong> this is the least-documented project in the archive. No public repository, dataset export, or screenshots were available to verify when this page was written, so this page describes the project's scope and method at the level the homepage supports — and deliberately reports <strong>no invented metrics, datasets, or findings</strong>. Specifics will be added when the underlying notebooks/data are published.</div></section>
+    <section class="case-section" aria-labelledby="app6"><p class="case-kicker">02 — APPROACH</p><h2 id="app6" class="case-h2">Analytical approach</h2><div class="card-grid"><article class="info-card"><h3 class="case-h3">Style dimensions</h3><p>Compare player and team profiles across pace, transition frequency, shooting distribution, play style, and defensive characteristics — the dimensions along which a signing can clash even when both sides are individually strong.</p></article><article class="info-card"><h3 class="case-h3">Fit interpretation</h3><p>Frame results as compatibility arguments (where a player amplifies a team identity vs. where he duplicates or conflicts with it), rather than a single reductive 'fit score' presented without context.</p></article></div><p class="callout">Tools as listed for the project: <strong>Python · SQL · data analysis · sports analytics</strong>. No specific libraries, data providers, or seasons are claimed here because they could not be verified from published source material.</p></section>
+    <section class="case-section" aria-labelledby="ch6"><p class="case-kicker">03 — CHALLENGES & LIMITATIONS</p><h2 id="ch6" class="case-h2">Challenges & limitations</h2><article class="challenge-card"><h3 class="case-h3">Fit is multidimensional</h3><p><strong>Challenge:</strong> A player can fit a team’s pace but not its shot diet, or its defense but not its creation burden.</p><p class="decision"><strong>Decision:</strong> Analyse several style dimensions separately before synthesising an interpretation, instead of collapsing everything into one number up front.</p></article><article class="challenge-card"><h3 class="case-h3">Unpublished source material</h3><p><strong>Challenge:</strong> Without a public repo or data export, results cannot be independently checked.</p><p class="decision"><strong>Decision:</strong> Publish only the supported scope on this page and flag the gap — the honest next step is releasing the notebooks and data definitions.</p></article></section>
+    <section class="case-section" aria-labelledby="next6"><p class="case-kicker">04 — NEXT STEPS</p><h2 id="next6" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Documented so far:</strong> project scope, analytical dimensions, and toolset as summarised on the homepage.</p><p><strong>To strengthen this case study:</strong> publish the repository (data sources and seasons, feature definitions, fit methodology, example player-team evaluations with visualisations). Once available, this page will add verified findings, charts, and a GitHub link.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../bnpl-risk/"><span>← PREVIOUS PROJECT</span>BNPL Payment Default & Collections Risk</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../markov-market-modeling/"><span>NEXT PROJECT →</span>Markov Chain Market Modeling</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A SQL analytics project over 100 DJ and concert events: a SQLite database with derived profit, fill-rate, and marketing-spend metrics, analysed with CTEs and window functions to rank events, venues, and genres and to test whether marketing spend actually produces profit." />
+  <title>Record Label Event & Marketing Analytics — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Record Label Event & Marketing Analytics | Lukas Tien" />
+  <meta property="og:description" content="A SQL analytics project over 100 DJ and concert events: a SQLite database with derived profit, fill-rate, and marketing-spend metrics, analysed with CTEs and window functions to rank events, venues, and genres and to test whether marketing spend actually produces profit." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/record-label-analytics/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 03 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">RECORD LABEL EVENT &amp;<br />MARKETING ANALYTICS</h1>
+      <p class="case-subtitle">What 100 events reveal about revenue, venues, and marketing spend</p>
+      <div class="case-meta"><span>JUN 2026</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A SQL analytics project over 100 DJ and concert events: a SQLite database with derived profit, fill-rate, and marketing-spend metrics, analysed with CTEs and window functions to rank events, venues, and genres and to test whether marketing spend actually produces profit.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/dj-event-analytics" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · SQL · EXCEL · TABLEAU</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov3"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov3" class="case-h2">The business problem</h2><div class="two-col"><div class="case-copy"><p>A promotions team or venue operator running many events needs to know: which events actually make money, where marketing spend is working, and which venues and genres deserve more bookings?</p><p>This project builds a SQL database of <strong>100 DJ and concert events</strong> (Jan 2024 – Dec 2025) and answers those questions with executive KPIs, revenue and attendance analysis, marketing-channel breakdowns, and advanced SQL (CTEs, window functions, performance tiers).</p></div><div class="case-copy"><p><strong>Data honesty:</strong> the 100-event dataset is <strong>fictional</strong>, generated to demonstrate business-focused SQL analysis. Every figure below is computed by the queries in the repository from that dataset — the portfolio value is the analytical method, not a claim about a real label's books.</p><p>Useful to promotions, venue, and marketing teams as a reusable query library: swap in real event data and the same KPIs, tiers, and ROI views apply.</p></div></div></section>
+    <section class="case-section" aria-labelledby="res3"><p class="case-kicker">02 — KEY RESULTS</p><h2 id="res3" class="case-h2">Results & findings (fictional dataset, SQL-computed)</h2><div class="metrics-grid" role="list"><div class="metric" role="listitem"><span class="metric-value">100</span><span class="metric-label">EVENTS ANALYSED<br />JAN 2024 – DEC 2025</span></div><div class="metric" role="listitem"><span class="metric-value">$1.82M</span><span class="metric-label">TOTAL REVENUE<br />ACROSS ALL EVENTS</span></div><div class="metric" role="listitem"><span class="metric-value">$1.10M</span><span class="metric-label">TOTAL PROFIT<br />REVENUE − BUDGET</span></div><div class="metric" role="listitem"><span class="metric-value">57.6%</span><span class="metric-label">AVERAGE FILL RATE<br />37,963 ATTENDEES</span></div><div class="metric" role="listitem"><span class="metric-value">3.87 / 5</span><span class="metric-label">AVERAGE<br />SATISFACTION SCORE</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Genre performance</h3><p>EDM leads revenue by event type (~$586K), followed by Hip-Hop (~$394K) and Open Format (~$306K) — while profitability still depends on budget discipline per event.</p></article><article class="info-card"><h3 class="case-h3">Venue scale effect</h3><p>Large-capacity venues (Grand Stage, Pulse Arena) dominate top-revenue events; the top 3 events alone account for a significant share of portfolio revenue.</p></article><article class="info-card"><h3 class="case-h3">Marketing spend ≠ profit</h3><p>Spend is balanced across TikTok (~$94K), Instagram (~$91K), flyer (~$89K), and email (~$87K), but high-spend-tier events do not always produce the highest average profit — some low-budget events with strong organic turnout outperform heavily marketed ones.</p></article></div></div><p class="callout">An earlier homepage summary described this work as projecting a ~15% revenue lift from reallocating outreach. That figure is a <strong>modelled projection, not a measured result</strong>, and it is not reproduced as a computed output in the repository — so it is not presented as a finding here.</p></section>
+    <section class="case-section" aria-labelledby="tech3"><p class="case-kicker">03 — TECHNICAL IMPLEMENTATION</p><h2 id="tech3" class="case-h2">How it was built</h2><div class="arch-flow" role="img" aria-label="Workflow: Event Dataset (CSV) then SQLite Database then Core Analysis SQL then Advanced SQL then Insights Report"><div class="arch-node"><b>Event Dataset (CSV)</b><span>100 fictional events · 17 columns</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>SQLite Database</b><span>Schema + enriched views</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Core Analysis SQL</b><span>KPIs · revenue · attendance · marketing</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Advanced SQL</b><span>CTEs · window functions · tiers</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Insights Report</b><span>Findings &amp; recommendations</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Schema design</h3><p><code>sql/schema.sql</code> defines the events table plus enriched views with derived metrics computed in SQL: profit (revenue − budget), attendance rate, and total marketing spend across four channels.</p></article><article class="info-card"><h3 class="case-h3">Analytical SQL</h3><p><code>sql/analysis.sql</code> covers executive KPIs, top events, revenue by type/venue, fill rates, and channel spend; <code>sql/advanced_analysis.sql</code> adds RANK/ROW_NUMBER/LAG window functions, running revenue totals, and CASE WHEN performance tiers.</p></article><article class="info-card"><h3 class="case-h3">Method notes</h3><p>RSVP-to-attendance conversion is used as an engagement proxy because the dataset has no customer IDs — returning-vs-new analysis is explicitly noted as impossible rather than approximated silently.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="ch3"><p class="case-kicker">04 — CHALLENGES & DECISIONS</p><h2 id="ch3" class="case-h2">Challenges & decisions</h2><article class="challenge-card"><h3 class="case-h3">No customer identity in the data</h3><p><strong>Challenge:</strong> Without customer IDs, repeat-attendance and customer-lifetime questions cannot be answered.</p><p class="decision"><strong>Decision:</strong> Use RSVP conversion as an engagement proxy and state the limitation in the README and insights — do not fabricate a retention metric.</p></article><article class="challenge-card"><h3 class="case-h3">Spend can mask weak demand</h3><p><strong>Challenge:</strong> Balanced channel budgets make 'spend more' look like a strategy even when organic events outperform.</p><p class="decision"><strong>Decision:</strong> Compare spend tiers against profit, not just revenue, leading to the recommendation to cap spend until RSVP velocity confirms demand.</p></article></section>
+    <section class="case-section" aria-labelledby="next3"><p class="case-kicker">05 — NEXT STEPS</p><h2 id="next3" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> SQLite schema and views, core and advanced analysis query suites, and a full insights report (<code>insights.md</code>).</p><p><strong>Future work (not yet done):</strong> connect a real (anonymised) event dataset; add the Tableau/dashboard layer described in earlier portfolio summaries; add customer-level tracking so repeat attendance can be measured directly. The repository's screenshot placeholders in its README are still empty — no dashboard screenshots exist, so none are shown here.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/dj-event-analytics" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../employee-attrition/"><span>← PREVIOUS PROJECT</span>Employee Attrition & Retention Analysis</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../portfolio-risk/"><span>NEXT PROJECT →</span>Portfolio Risk & Robo-Advisor Allocation Engine</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

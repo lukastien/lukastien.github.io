@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A discrete-time Markov chain over daily SPY price regimes (from 2015): MLE-estimated transition matrix, stationary distribution solved via eigenvectors, and simulated state paths — an applied companion to probability coursework." />
+  <title>Markov Chain Market Modeling — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Markov Chain Market Modeling | Lukas Tien" />
+  <meta property="og:description" content="A discrete-time Markov chain over daily SPY price regimes (from 2015): MLE-estimated transition matrix, stationary distribution solved via eigenvectors, and simulated state paths — an applied companion to probability coursework." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/markov-market-modeling/" />
+  <meta property="og:image" content="https://lukastien.github.io/assets/markov/transition_matrix.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 07 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">MARKOV CHAIN<br />MARKET MODELING</h1>
+      <p class="case-subtitle">Up, down, or flat — modelling market regimes as a Markov chain</p>
+      <div class="case-meta"><span>PROJECT 07</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A discrete-time Markov chain over daily SPY price regimes (from 2015): MLE-estimated transition matrix, stationary distribution solved via eigenvectors, and simulated state paths — an applied companion to probability coursework.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/markov-chain-demonstration" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · STATISTICS · PROBABILITY · MARKOV CHAINS</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov7"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov7" class="case-h2">The project</h2><div class="two-col"><div class="case-copy"><p>Markets don't move randomly day to day in a completely memoryless way — but how much structure is there in simple up/down/flat regimes? This project builds a discrete-time Markov chain over daily market states to find out: estimate transition probabilities from real price history, solve for the long-run regime mix, and simulate future state paths.</p><p>It is an applied companion to probability coursework (STAT 150 concepts): MLE transition estimation, stationary distributions via eigenvectors, Chapman–Kolmogorov n-step probabilities, and Monte-Carlo simulation of the fitted chain.</p></div><div class="case-copy"><p><strong>Implementation:</strong> a single documented Python script (<code>markov_regime.py</code>) using yfinance, NumPy, matplotlib, and seaborn. Data: daily SPY prices from 2015-01-01 onward, classified at a ±0.5% daily-return threshold.</p></div></div></section>
+    <section class="case-section" aria-labelledby="tech7"><p class="case-kicker">02 — TECHNICAL IMPLEMENTATION</p><h2 id="tech7" class="case-h2">How it works</h2><div class="arch-flow" role="img" aria-label="Workflow: SPY Daily Prices then State Classification then Transition Matrix (MLE) then Stationary Distribution then Simulation"><div class="arch-node"><b>SPY Daily Prices</b><span>yfinance · from 2015-01-01</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>State Classification</b><span>Up / Down / Flat at ±0.5%</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Transition Matrix (MLE)</b><span>Count transitions · normalise rows</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Stationary Distribution</b><span>Solve πP = π via eigenvectors</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Simulation</b><span>Sample 100-day state paths</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">State definition</h3><p><code>r &gt; +0.5% → Up</code>, <code>r &lt; −0.5% → Down</code>, otherwise <strong>Flat</strong>. The threshold is a parameter — changing it changes the regime story, which is itself a modelling lesson.</p></article><article class="info-card"><h3 class="case-h3">Estimation</h3><p>Maximum-likelihood transition matrix: count observed state-to-state transitions and normalise each row into probabilities.</p></article><article class="info-card"><h3 class="case-h3">Long-run behaviour</h3><p>The stationary distribution is the eigenvector of P<sup>T</sup> at eigenvalue 1, normalised to sum to 1 — the market’s long-run regime mix if the chain’s dynamics held indefinitely.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="viz7"><p class="case-kicker">03 — VISUAL SHOWCASE</p><h2 id="viz7" class="case-h2">Charts (generated by the project)</h2><div class="gallery-grid"><figure class="gallery-card"><button type="button" data-lightbox="../../assets/markov/transition_matrix.png" data-title="Transition Matrix" data-alt="Heatmap of the estimated Markov transition matrix between Up, Down, and Flat market states" aria-label="Enlarge transition matrix chart"><img class="gallery-img" src="../../assets/markov/transition_matrix.png" alt="Heatmap of the estimated Markov transition matrix between Up, Down, and Flat market states" width="600" height="500" loading="lazy" /></button><figcaption><strong>TRANSITION MATRIX</strong>Estimated one-day transition probabilities between regimes. Click to enlarge.</figcaption></figure><figure class="gallery-card"><button type="button" data-lightbox="../../assets/markov/stationary_distribution.png" data-title="Stationary Distribution" data-alt="Bar chart of the stationary distribution showing long-run probability of Up, Down, and Flat states" aria-label="Enlarge stationary distribution chart"><img class="gallery-img" src="../../assets/markov/stationary_distribution.png" alt="Bar chart of the stationary distribution showing long-run probability of Up, Down, and Flat states" width="600" height="400" loading="lazy" /></button><figcaption><strong>STATIONARY DISTRIBUTION</strong>Long-run regime probabilities π satisfying πP = π. Click to enlarge.</figcaption></figure><figure class="gallery-card"><button type="button" data-lightbox="../../assets/markov/simulated_path.png" data-title="Simulated Path" data-alt="Scatter plot of a simulated 100-day sequence of market states sampled from the fitted Markov chain" aria-label="Enlarge simulated path chart"><img class="gallery-img" src="../../assets/markov/simulated_path.png" alt="Scatter plot of a simulated 100-day sequence of market states sampled from the fitted Markov chain" width="900" height="225" loading="lazy" /></button><figcaption><strong>SIMULATED PATH</strong>A 100-day sequence sampled from the fitted chain. Click to enlarge.</figcaption></figure></div><p class="callout">Exact probabilities vary with the download date range (the script pulls live data via yfinance); the charts above are the outputs committed with the project. Educational only — not financial advice or a trading strategy.</p></section>
+    <section class="case-section" aria-labelledby="ch7"><p class="case-kicker">04 — CHALLENGES, ASSUMPTIONS & LIMITATIONS</p><h2 id="ch7" class="case-h2">Assumptions & limitations</h2><article class="challenge-card"><h3 class="case-h3">The Markov assumption is strong</h3><p><strong>Challenge:</strong> Real markets have memory beyond yesterday's regime — volatility clustering, news, and trends violate first-order memorylessness.</p><p class="decision"><strong>Decision:</strong> Treat the chain as a descriptive baseline and teaching tool; the repo README makes no predictive or trading claim.</p></article><article class="challenge-card"><h3 class="case-h3">Threshold sensitivity</h3><p><strong>Challenge:</strong> The ±0.5% cut defines what counts as a 'regime', so results are conditional on that choice.</p><p class="decision"><strong>Decision:</strong> Expose the threshold as a parameter and list regime-comparison across thresholds/tickers as an explicit extension.</p></article><article class="challenge-card"><h3 class="case-h3">Stationarity is assumed, not tested</h3><p><strong>Challenge:</strong> A single transition matrix for 2015–present averages over bull, bear, and crisis periods.</p><p class="decision"><strong>Decision:</strong> Natural next steps: per-period matrices, n-step probabilities via matrix powers, and expected return times (1/π) — all listed as extensions in the repo.</p></article></section>
+    <section class="case-section" aria-labelledby="next7"><p class="case-kicker">05 — NEXT STEPS</p><h2 id="next7" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> data pull, state classification, MLE transition matrix, stationary distribution, simulation, and three charts.</p><p><strong>Future work (from the repo, not yet done):</strong> expected return time per state, n-step transition probabilities, regime comparison across tickers and time periods, and overlaying classified states on the price chart.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/markov-chain-demonstration" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../nba-player-fit/"><span>← PREVIOUS PROJECT</span>NBA Player-Team Fit Analysis</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../mobility-loan-closet/"><span>NEXT PROJECT →</span>Mobility Loan Closet</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

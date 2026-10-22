@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Default-risk modeling on ~251,000 real consumer-credit records (BNPL lens): XGBoost and logistic-regression classifiers trained only on 150,000 labelled rows, full-population risk tiering, constructed-duration survival illustration, and a collections cost-benefit scenario." />
+  <title>BNPL Payment Default & Collections Risk — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="BNPL Payment Default & Collections Risk | Lukas Tien" />
+  <meta property="og:description" content="Default-risk modeling on ~251,000 real consumer-credit records (BNPL lens): XGBoost and logistic-regression classifiers trained only on 150,000 labelled rows, full-population risk tiering, constructed-duration survival illustration, and a collections cost-benefit scenario." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/bnpl-risk/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 05 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">BNPL PAYMENT DEFAULT &amp;<br />COLLECTIONS RISK</h1>
+      <p class="case-subtitle">Who defaults, how borrowers tier, and where collections pays</p>
+      <div class="case-meta"><span>APR 2026</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>Default-risk modeling on ~251,000 real consumer-credit records (BNPL lens): XGBoost and logistic-regression classifiers trained only on 150,000 labelled rows, full-population risk tiering, constructed-duration survival illustration, and a collections cost-benefit scenario.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/bnpl-default-risk-analysis" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · SQL · EXCEL</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov5"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov5" class="case-h2">The business problem</h2><div class="two-col"><div class="case-copy"><p>For an installment / BNPL-style lender, the collections budget is finite: intervene too late and losses are written off; intervene everywhere and you spend more than you save. The operational questions are <strong>who</strong> is at risk, <strong>when</strong> risk concentrates, and <strong>where</strong> a collections dollar earns the most back.</p><p>This project models default risk on real consumer-credit data, scores a quarter-million borrowers into risk tiers, and prices an early-intervention strategy by tier.</p></div><div class="case-copy"><p><strong>Framing honesty (from the repo):</strong> the data is the real public <em>Give Me Some Credit</em> credit dataset, reframed with a BNPL lens — it is <strong>not</strong> Affirm/Klarna/Afterpay transaction data. And the dataset has <strong>no observed time-to-default</strong>: the survival duration is <strong>constructed</strong> by a documented deterministic rule (see below), so Kaplan–Meier curves illustrate the tiering, not real observed timing.</p></div></div></section>
+    <section class="case-section" aria-labelledby="res5"><p class="case-kicker">02 — KEY RESULTS</p><h2 id="res5" class="case-h2">Results & findings</h2><div class="metrics-grid" role="list"><div class="metric" role="listitem"><span class="metric-value">251,503</span><span class="metric-label">BORROWERS SCORED<br />FEATURES + SCORING POPULATION</span></div><div class="metric" role="listitem"><span class="metric-value">150,000</span><span class="metric-label">LABELLED ROWS<br />USED FOR TRAINING / EVAL ONLY</span></div><div class="metric" role="listitem"><span class="metric-value">0.869</span><span class="metric-label">XGBOOST HOLDOUT<br />ROC-AUC</span></div><div class="metric" role="listitem"><span class="metric-value">0.861</span><span class="metric-label">LOGISTIC REGRESSION<br />HOLDOUT ROC-AUC</span></div><div class="metric" role="listitem"><span class="metric-value">10%</span><span class="metric-label">FLAGGED HIGH-TIER<br />25,151 BORROWERS</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">What drives risk</h3><p>Prior delinquency count is the #1 XGBoost feature (importance 0.408), followed by revolving-utilisation bucket (0.284). An explicitly engineered payment-to-income feature ranked only #11 — a useful negative result, reported as such.</p></article><article class="info-card"><h3 class="case-h3">Tiering</h3><p>The scored population splits Low 176,052 (70%) / Medium 50,300 (20%) / High 25,151 (10%). At the top decile, precision is 0.372 and recall 0.557 (PR-AUC 0.404) — honest numbers for a 6.68% base default rate.</p></article><article class="info-card"><h3 class="case-h3">Collections economics (scenario)</h3><p>Under documented assumptions ($15/attempt × 2, 20% success, 70% LGD, ~$9,789 average balance proxy), prioritising High then Medium tiers yields a modelled net benefit of ~$29.0M (High) and ~$66.3M (High+Medium). These are <strong>scenario outputs</strong>, sensitive to score calibration — see the repo strategy brief caveats.</p></article><article class="info-card"><h3 class="case-h3">Constructed-time survival</h3><p>On the constructed duration, Kaplan–Meier S(24) is 0.985 (Low), 0.907 (Medium), 0.620 (High) — the tier ordering behaves as intended. Cox PH was <strong>not</strong> run in this repo.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="tech5"><p class="case-kicker">03 — TECHNICAL IMPLEMENTATION</p><h2 id="tech5" class="case-h2">How it was built</h2><div class="arch-flow" role="img" aria-label="Workflow: Credit Dataset then Python ETL then Classification then Risk Tiering then Constructed Survival then Collections Model"><div class="arch-node"><b>Credit Dataset</b><span>~251K borrowers (train + test)</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Python ETL</b><span>Cleaning · feature engineering · SQLite</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Classification</b><span>Logistic regression · XGBoost</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Risk Tiering</b><span>Low / Medium / High scoring</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Constructed Survival</b><span>Kaplan–Meier by tier</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Collections Model</b><span>Cost-benefit by tier</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Record-count discipline</h3><p>Feature engineering and scoring run on the combined 251,503 records; classifier training/evaluation use <strong>only</strong> the 150,000 labelled training rows (stratified 80/20). 'Engineer and score on 200K+; learn and validate only on labelled data.'</p></article><article class="info-card"><h3 class="case-h3">Feature engineering</h3><p>Payment-to-income ratio, prior-delinquency count (with 96/98 artifact-code handling), and revolving-utilisation buckets — each documented with its role and measured importance.</p></article><article class="info-card"><h3 class="case-h3">Constructed duration rule</h3><p>Window 24 months; non-events censored at 24; for events, <code>duration = clip(24 − 2 × severity, 1, 23)</code> where severity combines prior delinquencies and utilisation. Deterministic, documented, and never described as observed time-to-default.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="ch5"><p class="case-kicker">04 — CHALLENGES & DECISIONS</p><h2 id="ch5" class="case-h2">Challenges, decisions & limitations</h2><article class="challenge-card"><h3 class="case-h3">No observed default timing</h3><p><strong>Challenge:</strong> A 'when will they default?' model needs event times the dataset simply does not contain.</p><p class="decision"><strong>Decision:</strong> Construct a transparent, deterministic duration proxy for Kaplan–Meier illustration, label it everywhere, and skip Cox PH rather than fit it to invented times.</p></article><article class="challenge-card"><h3 class="case-h3">Headline-count inflation risk</h3><p><strong>Challenge:</strong> '200K+ records' is true for scoring but false for training.</p><p class="decision"><strong>Decision:</strong> Publish the record-count policy in the README and repeat it wherever the number appears.</p></article><article class="challenge-card"><h3 class="case-h3">Scenario dollars can mislead</h3><p><strong>Challenge:</strong> Collections savings scale directly with assumed success rates, LGD, and balance proxies.</p><p class="decision"><strong>Decision:</strong> State every assumption next to the dollar figures and flag calibration sensitivity in the strategy brief.</p></article></section>
+    <section class="case-section" aria-labelledby="next5"><p class="case-kicker">05 — NEXT STEPS</p><h2 id="next5" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> ETL, feature engineering, both classifiers, full-population tier scoring, constructed-duration Kaplan–Meier, collections cost-benefit scenario, Tableau exports, strategy brief.</p><p><strong>Future work (not yet done):</strong> publish Tableau Public / interactive Excel workbook (optional steps in the repo); probability calibration before any dollar claim is relied on; a dataset with true observed event times so survival analysis can be done for real.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/bnpl-default-risk-analysis" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../portfolio-risk/"><span>← PREVIOUS PROJECT</span>Portfolio Risk & Robo-Advisor Allocation Engine</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../nba-player-fit/"><span>NEXT PROJECT →</span>NBA Player-Team Fit Analysis</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>

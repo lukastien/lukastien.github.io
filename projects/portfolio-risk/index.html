@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A Modern Portfolio Theory allocation engine over 30 securities (2013–2018): PyPortfolioOpt efficient-frontier tiers with Sharpe, 95% VaR, and drawdown measurement, a 5% rebalancing rule, and a disclosed 60/40 proxy benchmark comparison." />
+  <title>Portfolio Risk & Robo-Advisor Allocation Engine — Case Study | Lukas Tien</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Portfolio Risk & Robo-Advisor Allocation Engine | Lukas Tien" />
+  <meta property="og:description" content="A Modern Portfolio Theory allocation engine over 30 securities (2013–2018): PyPortfolioOpt efficient-frontier tiers with Sharpe, 95% VaR, and drawdown measurement, a 5% rebalancing rule, and a disclosed 60/40 proxy benchmark comparison." />
+  <meta property="og:url" content="https://lukastien.github.io/projects/portfolio-risk/" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <link rel="stylesheet" href="../../case-study.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="../../index.html#top" class="logo">LUKAS TIEN</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../../index.html#projects">PROJECTS</a>
+      <a href="../../index.html#experience">WORK EXPERIENCE</a>
+      <a href="../../index.html#about">ABOUT ME</a>
+      <a href="../../index.html#contact">CONTACT</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <nav class="mobile-nav" aria-label="Mobile" hidden>
+    <a href="../../index.html#projects">PROJECTS</a>
+    <a href="../../index.html#experience">WORK EXPERIENCE</a>
+    <a href="../../index.html#about">ABOUT ME</a>
+    <a href="../../index.html#contact">CONTACT</a>
+  </nav>
+  <main class="case-main" id="main">
+    <section class="case-section case-hero" aria-labelledby="case-title">
+      <p class="case-kicker">PROJECT 04 · CASE STUDY</p>
+      <h1 id="case-title" class="case-title">PORTFOLIO RISK &amp;<br />ROBO-ADVISOR ENGINE</h1>
+      <p class="case-subtitle">Modern Portfolio Theory, risk tiers, and honest benchmarks</p>
+      <div class="case-meta"><span>MAY 2026</span><span>BY LUKAS TIEN</span></div>
+      <div class="case-copy"><p>A Modern Portfolio Theory allocation engine over 30 securities (2013–2018): PyPortfolioOpt efficient-frontier tiers with Sharpe, 95% VaR, and drawdown measurement, a 5% rebalancing rule, and a disclosed 60/40 proxy benchmark comparison.</p></div>
+      <div class="case-actions"><a class="btn-primary" href="https://github.com/lukastien/robo-advisor-portfolio-optimizer" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Back to Projects</a></div>
+      <p class="timeline-tech">PYTHON · SQL · TABLEAU</p>
+    </section>
+    <section class="case-section" aria-labelledby="ov4"><p class="case-kicker">01 — PROJECT OVERVIEW</p><h2 id="ov4" class="case-h2">The business problem</h2><div class="two-col"><div class="case-copy"><p>A robo-advisor's core job: given a client's risk profile, build a diversified portfolio that maximises risk-adjusted return — then prove, with risk numbers, how it compares to a plain benchmark.</p><p>This project implements that allocation engine with Modern Portfolio Theory: efficient-frontier optimisation across real historical prices, three risk tiers, downside-risk metrics, a rebalancing rule, and a benchmark comparison.</p></div><div class="case-copy"><p><strong>What's real vs synthetic (disclosed in the repo):</strong> price data is real — 5 years of daily data (2013–2018) for 30 securities across 8 sectors. Client risk profiles are synthetic (200 generated profiles, fixed seed) because no real client data exists for this project.</p></div></div></section>
+    <section class="case-section" aria-labelledby="res4"><p class="case-kicker">02 — KEY RESULTS</p><h2 id="res4" class="case-h2">Results & findings (2013–2018 backtest)</h2><div class="model-table-wrap"><table><caption class="hidden">Risk tier performance versus 60/40 proxy benchmark</caption><thead><tr><th scope="col">Portfolio</th><th scope="col">Ann. return</th><th scope="col">Ann. vol</th><th scope="col">Sharpe</th><th scope="col">95% VaR</th><th scope="col">Max drawdown</th></tr></thead><tbody><tr><td>Conservative</td><td>7.55%</td><td>9.71%</td><td>0.571</td><td>0.96%</td><td>−11.3%</td></tr><tr><td>Moderate</td><td>28.38%</td><td>14.02%</td><td><strong>1.881</strong></td><td>1.27%</td><td>−15.7%</td></tr><tr><td>Aggressive</td><td>36.47%</td><td>22.00%</td><td>1.567</td><td>1.96%</td><td>−26.7%</td></tr><tr><td>60/40 proxy</td><td>14.63%</td><td>10.93%</td><td>1.155</td><td>—</td><td>−10.3%</td></tr></tbody></table></div><p class="callout">The <strong>Moderate tier has the best realised Sharpe (1.881 vs 1.155)</strong> for the 60/40 proxy. Important caveat, disclosed in the repo: the "60/40" benchmark is an <strong>equity proxy</strong> (defensive stocks stand in for bonds), not a real bond allocation. These are in-sample backtest results on 2013–2018 data — not live performance and not investment advice.</p></section>
+    <section class="case-section" aria-labelledby="tech4"><p class="case-kicker">03 — TECHNICAL IMPLEMENTATION</p><h2 id="tech4" class="case-h2">How it was built</h2><div class="arch-flow" role="img" aria-label="Workflow: Historical Prices then SQLite ETL then PyPortfolioOpt then Risk Metrics then Rebalancing Sim then Tableau Exports"><div class="arch-node"><b>Historical Prices</b><span>30 securities · 2013–2018 daily</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>SQLite ETL</b><span>Returns &amp; storage</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>PyPortfolioOpt</b><span>Efficient-frontier tiers</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Risk Metrics</b><span>Sharpe · 95% VaR · drawdown</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Rebalancing Sim</b><span>5% drift rule</span></div><span class="arch-arrow" aria-hidden="true">→</span><div class="arch-node"><b>Tableau Exports</b><span>Tier &amp; benchmark CSVs</span></div></div><div style="margin-top:1.5rem;"><div class="card-grid"><article class="info-card"><h3 class="case-h3">Optimisation</h3><p><code>src/portfolio_optimization.py</code> builds Conservative / Moderate / Aggressive tiers on the efficient frontier with PyPortfolioOpt (risk-free rate 2%). The Conservative 8% volatility target proved infeasible — the frontier floor was ≈9.71% — so it was built at that feasible floor and the adjustment is documented.</p></article><article class="info-card"><h3 class="case-h3">Risk measurement</h3><p>Annualised Sharpe ratio, historical 95% Value-at-Risk, and maximum drawdown per tier, computed from the same return series so tiers and benchmark are directly comparable.</p></article><article class="info-card"><h3 class="case-h3">Rebalancing</h3><p>A 5% drift rule: rebalance whenever any weight drifts more than 5% from target. In-sample trigger counts — Conservative 1, Moderate 5, Aggressive 6 — show how maintenance cost scales with volatility.</p></article><article class="info-card"><h3 class="case-h3">Reporting</h3><p>Tableau-ready CSV exports (tier performance time series, risk/return summary, rebalance events) with a build guide, plus strategy and market-research briefs.</p></article></div></div></section>
+    <section class="case-section" aria-labelledby="ch4"><p class="case-kicker">04 — CHALLENGES & DECISIONS</p><h2 id="ch4" class="case-h2">Challenges & decisions</h2><article class="challenge-card"><h3 class="case-h3">An infeasible risk target</h3><p><strong>Challenge:</strong> The Conservative tier's 8% volatility target sits below the efficient frontier's minimum for this security set.</p><p class="decision"><strong>Decision:</strong> Build at the feasible floor (≈9.71%) and disclose it, rather than quietly relaxing constraints until the number appears.</p></article><article class="challenge-card"><h3 class="case-h3">No real bond data for the benchmark</h3><p><strong>Challenge:</strong> A true 60/40 needs a bond series the dataset does not contain.</p><p class="decision"><strong>Decision:</strong> Use defensive equities as an explicitly-labelled proxy and repeat that disclosure wherever the benchmark appears — never present it as a real bond allocation.</p></article><article class="challenge-card"><h3 class="case-h3">Concentration in the aggressive tier</h3><p><strong>Challenge:</strong> Long-only optimisation at a 22% vol target puts ~58% in a single name (AMZN).</p><p class="decision"><strong>Decision:</strong> Report the top weight alongside returns so the risk is visible; position limits are the natural next constraint to test.</p></article></section>
+    <section class="case-section" aria-labelledby="next4"><p class="case-kicker">05 — NEXT STEPS</p><h2 id="next4" class="case-h2">Next steps</h2><div class="case-copy"><p><strong>Completed:</strong> ETL, efficient-frontier tiers, VaR/Sharpe/drawdown, 5% rebalancing simulation, benchmark comparison, Tableau exports, briefs.</p><p><strong>Future work (not yet done):</strong> publish the Tableau Public dashboard (still TBD in the repo); add a true bond asset class; test position caps and transaction costs; walk-forward (out-of-sample) evaluation instead of a single in-sample window.</p></div></section>
+
+    <section class="case-section" aria-labelledby="links-title">
+      <p class="case-kicker">PROJECT LINKS</p>
+      <h2 id="links-title" class="case-h2">Explore the project</h2>
+      <div class="case-footer-links"><a class="btn-primary" href="https://github.com/lukastien/robo-advisor-portfolio-optimizer" target="_blank" rel="noopener noreferrer">View on GitHub →</a><a class="btn-ghost" href="../../index.html#projects">← Return to Projects</a></div>
+      <nav class="project-nav" aria-label="Project navigation">
+      <a class="nav-prev" href="../record-label-analytics/"><span>← PREVIOUS PROJECT</span>Record Label Event & Marketing Analytics</a>
+      <a class="nav-all" href="../../index.html#projects">ALL PROJECTS</a>
+      <a class="nav-next" href="../bnpl-risk/"><span>NEXT PROJECT →</span>BNPL Payment Default & Collections Risk</a>
+    </nav>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 LUKAS TIEN</p><p class="footer-note">Built with curiosity.</p></footer>
+  <dialog class="lightbox" aria-label="Enlarged image"><div class="lightbox-bar"><span class="lightbox-title">Image</span><button class="lightbox-close" type="button">Close ✕</button></div><img src="" alt="" /></dialog>
+  <script src="../../script.js"></script>
+  <script src="../../case-study.js"></script>
+</body>
+</html>
