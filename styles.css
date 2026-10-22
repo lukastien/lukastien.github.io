@@ -231,30 +231,56 @@ main {
 }
 
 /* ========================================
+   Hero
+   ======================================== */
+
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: calc(var(--header-h) + var(--space-lg));
+  padding-bottom: var(--space-lg);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(242, 240, 235, 0.03) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(200, 194, 180, 0.025) 0%, transparent 50%);
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 10vw, 7.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+.hero-role {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(0.8125rem, 1.6vw, 1rem);
+  letter-spacing: 0.18em;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.hero-fields {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(0.6875rem, 1.3vw, 0.8125rem);
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+/* ========================================
    Intro (About)
    ======================================== */
 
 .intro {
-  padding-top: calc(var(--header-h) + clamp(2.5rem, 6vw, 4.5rem));
+  padding-top: clamp(2.5rem, 6vw, 4rem);
   padding-bottom: clamp(3.5rem, 8vw, 5.5rem);
-}
-
-.intro-name {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2.5rem, 6vw, 4.25rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  margin-bottom: 1rem;
-}
-
-.intro-role {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(0.8125rem, 1.5vw, 0.9375rem);
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-  margin-bottom: 2.5rem;
+  border-top: 1px solid var(--border);
 }
 
 /* ========================================
@@ -545,18 +571,23 @@ main {
     display: flex;
   }
 
-  .intro {
+  .hero {
     padding-top: calc(var(--header-h) + 2rem);
-    padding-bottom: 3.5rem;
+    padding-bottom: 3rem;
   }
 
-  .intro-name {
-    font-size: clamp(2.25rem, 11vw, 3rem);
+  .hero-name {
+    font-size: clamp(2.75rem, 14vw, 4.5rem);
   }
 
-  .intro-role {
+  .hero-fields {
+    letter-spacing: 0.1em;
     line-height: 1.6;
-    margin-bottom: 2rem;
+  }
+
+  .intro {
+    padding-top: 2.5rem;
+    padding-bottom: 3.5rem;
   }
 
   .section {
